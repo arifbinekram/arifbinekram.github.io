@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SK ARIF BIN EKRAM | Cybersecurity Specialist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        
+        :root {
+            --primary: #0ea5e9;
+            --secondary: #10b981;
+            --dark: #1a0c1d; /* Changed to a more dark purple */
+            --darker: #0d0610; /* Changed to an even darker purple */
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark);
+            color: #e2e8f0;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .light-blue-text {
+            color: #87CEEB; /* Light blue color */
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(16, 185, 129, 0.1));
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background-color: #334155;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            top: 0;
+            left: 0;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            width: 2px;
+            background-color: #334155;
+            top: 16px;
+            bottom: 0;
+            left: 7px;
+        }
+        
+        .project-card {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .cert-card {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .cert-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .contact-form input, .contact-form textarea {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            color: #e2e8f0;
+            transition: border-color 0.3s ease;
+        }
+        
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(14, 165, 233, 0.3);
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #1e293b;
+            color: #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            
+            .desktop-menu {
+                display: none;
+            }
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--darker);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="fixed top-0 w-full bg-opacity-90 backdrop-blur-sm z-50 bg-gray-900 border-b border-gray-800">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-xl font-bold">
+                <span class="light-blue-text">SK ARIF BIN EKRAM</span>
+            </div>
+            
+            <nav class="desktop-menu">
+                <ul class="flex space-x-8">
+                    <li><a href="#home" class="nav-link text-gray-300 hover:text-white">Home</a></li>
+                    <li><a href="#about" class="nav-link text-gray-300 hover:text-white">About</a></li>
+                    <li><a href="#skills" class="nav-link text-gray-300 hover:text-white">Skills</a></li>
+                    <li><a href="#experience" class="nav-link text-gray-300 hover:text-white">Experience</a></li>
+                    <li><a href="#education" class="nav-link text-gray-300 hover:text-white">Education</a></li>
+                    <li><a href="#projects" class="nav-link text-gray-300 hover:text-white">Projects</a></li>
+                    <li><a href="#certifications" class="nav-link text-gray-300 hover:text-white">Certifications</a></li>
+                    <li><a href="#contact" class="nav-link text-gray-300 hover:text-white">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu text-gray-300 hover:text-white focus:outline-none" id="mobile-menu-button">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu hidden bg-gray-900 border-t border-gray-800" id="mobile-menu">
+            <div class="container mx-auto px-4 py-3">
+                <ul class="space-y-3">
+                    <li><a href="#home" class="block text-gray-300 hover:text-white py-2">Home</a></li>
+                    <li><a href="#about" class="block text-gray-300 hover:text-white py-2">About</a></li>
+                    <li><a href="#skills" class="block text-gray-300 hover:text-white py-2">Skills</a></li>
+                    <li><a href="#experience" class="block text-gray-300 hover:text-white py-2">Experience</a></li>
+                    <li><a href="#education" class="block text-gray-300 hover:text-white py-2">Education</a></li>
+                    <li><a href="#projects" class="block text-gray-300 hover:text-white py-2">Projects</a></li>
+                    <li><a href="#certifications" class="block text-gray-300 hover:text-white py-2">Certifications</a></li>
+                    <li><a href="#contact" class="block text-gray-300 hover:text-white py-2">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center gradient-bg pt-16">
+        <div class="container mx-auto px-4 py-20 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0 animate-fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">
+                    <span class="light-blue-text">SK ARIF BIN EKRAM</span>
+                </h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-cyan-400">Cybersecurity Specialist</h2>
+                <p class="text-lg text-gray-300 mb-8">
+                    Professional cybersecurity specialist with expertise in penetration testing, vulnerability assessment, and securing digital landscapes.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" class="btn-primary px-6 py-3 rounded-md text-white font-medium">
+                        Get In Touch
+                    </a>
+                    <a href="https://www.linkedin.com/in/sk-arif-bin-ekram/" target="_blank" class="px-6 py-3 rounded-md border border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-white transition-colors font-medium">
+                        LinkedIn Profile
+                    </a>
+                </div>
+            </div>
+            
+            <div class="md:w-1/2 flex justify-center animate-fade-in">
+                <div class="relative">
+                    <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-cyan-500 shadow-lg shadow-cyan-500/30">
+                        <img src="https://media.licdn.com/dms/image/v2/D5603AQFxm7OsA9vrCg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1703744094199?e=1756944000&v=beta&t=00uYg2lbwiW5FFYZc6xfhw8ymQWtjS9E1rHPZ70YTlk" alt="SK ARIF BIN EKRAM" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-4 -right-4 bg-cyan-500 text-gray-900 font-bold py-2 px-4 rounded-lg shadow-lg">
+                        <i class="fas fa-shield-alt mr-2"></i>Security Expert
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center">
+                <span class="gradient-text">About Me</span>
+            </h2>
+            
+            <div class="max-w-4xl mx-auto bg-gray-900 rounded-xl p-8 border border-gray-700 shadow-lg">
+                <p class="text-lg text-gray-300 mb-6">
+                    🔒 Cybersecurity Expert | Penetration Tester 💻
+                </p>
+                <p class="text-gray-300 mb-4">
+                    👋 Welcome to my profile! I'm SK ARIF BIN EKRAM, studying 🎓 B.Sc. in Computer Science & Engineering at North South University.
+                </p>
+                <p class="text-gray-300 mb-4">
+                    🛡️ I am a professional cybersecurity specialist with a passion for securing digital landscapes, uncovering vulnerabilities, and ensuring the integrity of critical systems. With a solid track record in the field, I bring a wealth of expertise across multiple domains and tools in the realm of penetration testing.
+                </p>
+                <p class="text-gray-300 mb-4">
+                    🎯 My comprehensive skill set covers various domains within the world of penetration testing, including website penetration testing, active directory penetration testing, network penetration testing, MITM penetration testing, and social engineering penetration testing.
+                </p>
+                <p class="text-gray-300 mb-4">
+                    🛠️ My toolkit is well-equipped with a range of industry-standard tools, including Nmap, Wireshark, Burp Suite, Metasploit, BloodHound, OWASP ZAP, and many more.
+                </p>
+                <p class="text-gray-300">
+                    🤝 I'm open to connecting with fellow professionals who share my passion for cybersecurity, ethical hacking, and securing the digital realm.
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center">
+                <span class="gradient-text">Skills & Expertise</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 card-hover">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-400">
+                        <i class="fas fa-globe mr-2"></i>Website Penetration Testing
+                    </h3>
+                    <p class="text-gray-300 mb-4">
+                        Uncovering vulnerabilities in web applications and websites using both automated scanning and manual testing techniques.
+                    </p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 95%"></div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 card-hover">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-400">
+                        <i class="fas fa-network-wired mr-2"></i>Active Directory Penetration Testing
+                    </h3>
+                    <p class="text-gray-300 mb-4">
+                        From enumeration to privilege escalation, securing Windows-based directory services and domain controllers.
+                    </p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 card-hover">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-400">
+                        <i class="fas fa-sitemap mr-2"></i>Network Penetration Testing
+                    </h3>
+                    <p class="text-gray-300 mb-4">
+                        Network discovery, vulnerability assessments, exploitation, post-exploitation, and traffic analysis.
+                    </p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 card-hover">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-400">
+                        <i class="fas fa-user-secret mr-2"></i>MITM Penetration Testing
+                    </h3>
+                    <p class="text-gray-300 mb-4">
+                        Identifying and mitigating Man-in-the-Middle attacks, securing communication channels, and preventing data interception.
+                    </p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 card-hover">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-400">
+                        <i class="fas fa-comments mr-2"></i>Social Engineering Penetration Testing
+                    </h3>
+                    <p class="text-gray-300 mb-4">
+                        Phishing, pretexting, impersonation, and employee awareness evaluations.
+                    </p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%"></div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 card-hover">
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-400">
+                        <i class="fas fa-tools mr-2"></i>Tool Proficiency
+                    </h3>
+                    <p class="text-gray-300 mb-4">
+                        Nmap, Wireshark, Burp Suite, Metasploit, BloodHound, OWASP ZAP, and more.
+                    </p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center">
+                <span class="gradient-text">Experience</span>
+            </h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="relative pl-8 border-l-2 border-cyan-500">
+                    <div class="mb-12 relative">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line"></div>
+                        <div class="ml-8">
+                            <h3 class="text-xl font-semibold text-white">Cybersecurity Intern</h3>
+                            <h4 class="text-lg text-cyan-400">Arena Web Security</h4>
+                            <p class="text-gray-400 mb-2">Jun 2022 - Aug 2022</p>
+                            <p class="text-gray-300">
+                                Gained hands-on experience in penetration testing, vulnerability assessment, and security auditing. Worked on real-world security projects and developed practical skills in identifying and mitigating security threats.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-12 relative">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line"></div>
+                        <div class="ml-8">
+                            <h3 class="text-xl font-semibold text-white">Freelance Cybersecurity Consultant</h3>
+                            <h4 class="text-lg text-cyan-400">Self-Employed</h4>
+                            <p class="text-gray-400 mb-2">2021 - Present</p>
+                            <p class="text-gray-300">
+                                Providing cybersecurity consulting services to small and medium businesses, including vulnerability assessments, penetration testing, and security awareness training.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="relative">
+                        <div class="timeline-dot"></div>
+                        <div class="ml-8">
+                            <h3 class="text-xl font-semibold text-white">Security Researcher</h3>
+                            <h4 class="text-lg text-cyan-400">Independent Research</h4>
+                            <p class="text-gray-400 mb-2">2020 - Present</p>
+                            <p class="text-gray-300">
+                                Conducting independent research on emerging cybersecurity threats, vulnerabilities, and defense mechanisms. Publishing findings and contributing to the cybersecurity community.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Education Section -->
+    <section id="education" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center">
+                <span class="gradient-text">Education</span>
+            </h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gray-800 rounded-xl p-8 border border-gray-700 card-hover">
+                    <div class="flex items-start">
+                        <div class="mr-6 text-cyan-400">
+                            <i class="fas fa-graduation-cap text-4xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-white">B.Sc. in Computer Science & Engineering</h3>
+                            <h4 class="text-lg text-cyan-400">North South University</h4>
+                            <p class="text-gray-400">2023 - Present</p>
+                            <p class="text-gray-300 mt-2">
+                                Currently pursuing a Bachelor's degree in Computer Science & Engineering with a focus on cybersecurity and network security. Active member of the university's cybersecurity club and participant in various security competitions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center">
+                <span class="gradient-text">Projects</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="project-card">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-semibold text-white">Packet-Sniffer</h3>
+                            <span class="bg-cyan-900 text-cyan-400 text-xs px-2 py-1 rounded">Python</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            A network packet sniffer tool that captures and analyzes network traffic in real-time.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <a href="https://github.com/arifbinekram/Packet-Sniffer" target="_blank" class="text-cyan-400 hover:text-cyan-300">
+                                <i class="fab fa-github mr-1"></i> GitHub
+                            </a>
+                            <span class="text-gray-400 text-sm">Public</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-semibold text-white">Keylogger-Project</h3>
+                            <span class="bg-cyan-900 text-cyan-400 text-xs px-2 py-1 rounded">Python</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            An educational keylogger project for cybersecurity awareness and research purposes.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <a href="https://github.com/arifbinekram/Keylogger-Project" target="_blank" class="text-cyan-400 hover:text-cyan-300">
+                                <i class="fab fa-github mr-1"></i> GitHub
+                            </a>
+                            <span class="text-gray-400 text-sm">Public</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-semibold text-white">Linux-Malware-Development</h3>
+                            <span class="bg-cyan-900 text-cyan-400 text-xs px-2 py-1 rounded">Python</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            A research project on Linux malware development techniques and defense mechanisms.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <a href="https://github.com/arifbinekram/Linux-Malware-Development" target="_blank" class="text-cyan-400 hover:text-cyan-300">
+                                <i class="fab fa-github mr-1"></i> GitHub
+                            </a>
+                            <span class="text-gray-400 text-sm">Public</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-semibold text-white">Login-Bruteforce</h3>
+                            <span class="bg-cyan-900 text-cyan-400 text-xs px-2 py-1 rounded">Python</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            A tool for testing login page security against brute force attacks.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <a href="https://github.com/arifbinekram/Login-Bruteforce" target="_blank" class="text-cyan-400 hover:text-cyan-300">
+                                <i class="fab fa-github mr-1"></i> GitHub
+                            </a>
+                            <span class="text-gray-400 text-sm">Public</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-semibold text-white">url-based-SQLi</h3>
+                            <span class="bg-cyan-900 text-cyan-400 text-xs px-2 py-1 rounded">Python</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            A tool for detecting and exploiting SQL injection vulnerabilities in web applications.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <a href="https://github.com/arifbinekram/url-based-SQLi" target="_blank" class="text-cyan-400 hover:text-cyan-300">
+                                <i class="fab fa-github mr-1"></i> GitHub
+                            </a>
+                            <span class="text-gray-400 text-sm">Public</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-semibold text-white">Windows-Malware-Development</h3>
+                            <span class="bg-cyan-900 text-cyan-400 text-xs px-2 py-1 rounded">Python</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            A research project on Windows malware development techniques and analysis.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <a href="https://github.com/arifbinekram/Windows-Malware-Development" target="_blank" class="text-cyan-400 hover:text-cyan-300">
+                                <i class="fab fa-github mr-1"></i> GitHub
+                            </a>
+                            <span class="text-gray-400 text-sm">Public</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="https://github.com/arifbinekram" target="_blank" class="btn-primary px-6 py-3 rounded-md text-white font-medium">
+                    <i class="fab fa-github mr-2"></i>View All Projects on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center">
+                <span class="gradient-text">Certifications</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="cert-card">
+                    <div class="flex items-start">
+                        <div class="mr-4 text-cyan-400">
+                            <i class="fab fa-microsoft text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-white">Microsoft Cybersecurity Analyst</h3>
+                            <p class="text-gray-400">Microsoft | Issued Jan 2025</p>
+                            <p class="text-gray-300 mt-2">Credential ID: 4MB9X52SZT4S</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="flex items-start">
+                        <div class="mr-4 text-cyan-400">
+                            <i class="fab fa-google text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-white">Google Cybersecurity Specialization</h3>
+                            <p class="text-gray-400">Google | Issued Dec 2023</p>
+                            <p class="text-gray-300 mt-2">Credential ID: 4KKLNDLAJXZG</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="flex items-start">
+                        <div class="mr-4 text-cyan-400">
+                            <i class="fas fa-shield-alt text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-white">Practical Ethical Hacking</h3>
+                            <p class="text-gray-400">TCM Security | Issued Jul 2022</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="flex items-start">
+                        <div class="mr-4 text-cyan-400">
+                            <i class="fas fa-globe text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-white">Cybersecurity</h3>
+                            <p class="text-gray-400">Arena Web Security | Issued Jun 2022</p>
+                            <p class="text-gray-300 mt-2">Credential ID: V-A38W2109S24</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="flex items-start">
+                        <div class="mr-4 text-cyan-400">
+                            <i class="fas fa-university text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-white">Leading People and Teams Specialization</h3>
+                            <p class="text-gray-400">University of Michigan</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center">
+                <span class="gradient-text">Get In Touch</span>
+            </h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-xl font-semibold text-white mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full bg-cyan-900 flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-cyan-400"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400">Email</p>
+                                    <p class="text-white">skarifbinekram@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full bg-cyan-900 flex items-center justify-center mr-4">
+                                    <i class="fas fa-phone text-cyan-400"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400">Phone</p>
+                                    <p class="text-white">+8801681449773</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full bg-cyan-900 flex items-center justify-center mr-4">
+                                    <i class="fab fa-linkedin text-cyan-400"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400">LinkedIn</p>
+                                    <a href="https://www.linkedin.com/in/sk-arif-bin-ekram/" target="_blank" class="text-white hover:text-cyan-400 transition-colors">
+                                        linkedin.com/in/sk-arif-bin-ekram/
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full bg-cyan-900 flex items-center justify-center mr-4">
+                                    <i class="fab fa-github text-cyan-400"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400">GitHub</p>
+                                    <a href="https://github.com/arifbinekram" target="_blank" class="text-white hover:text-cyan-400 transition-colors">
+                                        github.com/arifbinekram
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="text-lg font-semibold text-white mb-4">Connect with me</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://www.linkedin.com/in/sk-arif-bin-ekram/" target="_blank" class="social-icon">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://github.com/arifbinekram" target="_blank" class="social-icon">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="mailto:skarifbinekram@gmail.com" class="social-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold text-white mb-6">Send a Message</h3>
+                        
+                        <form class="contact-form space-y-4">
+                            <div>
+                                <input type="text" placeholder="Your Name" class="w-full px-4 py-3 rounded-lg focus:outline-none">
+                            </div>
+                            
+                            <div>
+                                <input type="email" placeholder="Your Email" class="w-full px-4 py-3 rounded-lg focus:outline-none">
+                            </div>
+                            
+                            <div>
+                                <input type="text" placeholder="Subject" class="w-full px-4 py-3 rounded-lg focus:outline-none">
+                            </div>
+                            
+                            <div>
+                                <textarea rows="4" placeholder="Your Message" class="w-full px-4 py-3 rounded-lg focus:outline-none"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn-primary w-full py-3 rounded-md text-white font-medium">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="py-8 bg-gray-900 border-t border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-gray-400">© 2023 SK ARIF BIN EKRAM. All rights reserved.</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a>
+                    <a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a>
+                    <a href="#projects" class="text-gray-400 hover:text-white transition-colors">Projects</a>
+                    <a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Form submission
+        const contactForm = document.querySelector('.contact-form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            contactForm.reset();
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
