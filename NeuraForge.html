@@ -1,0 +1,2668 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuraForge Technologies | Advanced AI & Software Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #3a0ca3;
+            --primary-dark: #240046;
+            --secondary: #4cc9f0;
+            --accent: #7209b7;
+            --light: #f8f9fa;
+            --dark: #212529;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+        
+        .font-tech {
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .service-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+            border-color: var(--secondary);
+        }
+        
+        .process-step {
+            transition: all 0.5s ease;
+        }
+        
+        .process-step:hover {
+            transform: scale(1.05);
+        }
+        
+        .process-connector {
+            position: absolute;
+            height: 2px;
+            background: var(--secondary);
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: -1;
+            opacity: 0.7;
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--secondary);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .service-filter-btn.active {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+        
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 1s ease-in-out;
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .slide-in-left {
+            animation: slideInLeft 1s ease-in-out;
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .process-connector {
+                display: none;
+            }
+        }
+        
+        /* Page transition */
+        .page-transition {
+            transition: opacity 0.3s ease-in-out;
+        }
+        
+        .page-enter, .page-leave-to {
+            opacity: 0;
+        }
+        
+        .page-enter-to, .page-leave {
+            opacity: 1;
+        }
+        
+        /* Team cards */
+        .team-card {
+            transition: all 0.3s ease;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Pricing card highlight */
+        .pricing-highlight {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-highlight::before {
+            content: 'Recommended';
+            position: absolute;
+            top: 10px;
+            right: -30px;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 3px 30px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            transform: rotate(45deg);
+        }
+        
+        /* Contact form */
+        .contact-input {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(74, 90, 121, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-input:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(76, 201, 240, 0.3);
+        }
+        
+        /* Service Page */
+        .service-hero {
+            min-height: 70vh;
+        }
+        
+        .service-feature {
+            transition: all 0.3s ease;
+        }
+        
+        .service-feature:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Case Study Detail */
+        .case-study-detail {
+            background: linear-gradient(135deg, rgba(58, 12, 163, 0.1) 0%, rgba(114, 9, 183, 0.1) 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100" 
+      x-data="{ 
+          mobileMenuOpen: false,
+          currentPage: 'home',
+          serviceFilter: 'all',
+          services: [
+              {
+                  id: 1,
+                  title: 'AI Agents Development',
+                  category: 'ai',
+                  icon: 'fa-robot',
+                  description: 'Custom intelligent agents that automate tasks and enhance decision-making processes.',
+                  link: 'ai-agents'
+              },
+              {
+                  id: 2,
+                  title: 'AI Software Development',
+                  category: 'ai',
+                  icon: 'fa-brain',
+                  description: 'Cutting-edge AI solutions tailored to your business needs with machine learning integration.',
+                  link: 'ai-software'
+              },
+              {
+                  id: 3,
+                  title: 'Web Development',
+                  category: 'development',
+                  icon: 'fa-code',
+                  description: 'Responsive, high-performance websites and web applications with modern frameworks.',
+                  link: 'web-development'
+              },
+              {
+                  id: 4,
+                  title: 'App Development',
+                  category: 'development',
+                  icon: 'fa-mobile-alt',
+                  description: 'Native and cross-platform mobile applications for iOS and Android devices.',
+                  link: 'app-development'
+              },
+              {
+                  id: 5,
+                  title: 'Cybersecurity Services',
+                  category: 'security',
+                  icon: 'fa-shield-alt',
+                  description: 'Comprehensive security solutions to protect your digital assets and infrastructure.',
+                  link: 'cybersecurity'
+              },
+              {
+                  id: 6,
+                  title: 'Cloud Solutions',
+                  category: 'infrastructure',
+                  icon: 'fa-cloud',
+                  description: 'Scalable cloud architecture and migration services for optimal performance.',
+                  link: 'cloud-solutions'
+              }
+          ],
+          testimonials: [
+              {
+                  id: 1,
+                  name: 'Sarah Johnson',
+                  position: 'CTO, TechVision Inc.',
+                  content: 'NeuraForge delivered an AI solution that transformed our customer service operations. The team\'s expertise and professionalism exceeded our expectations.',
+                  image: 'https://randomuser.me/api/portraits/women/32.jpg'
+              },
+              {
+                  id: 2,
+                  name: 'Michael Chen',
+                  position: 'CEO, DataStream',
+                  content: 'Working with NeuraForge on our cybersecurity infrastructure was a game-changer. Their thorough approach and innovative solutions have given us peace of mind.',
+                  image: 'https://randomuser.me/api/portraits/men/45.jpg'
+              },
+              {
+                  id: 3,
+                  name: 'Emily Rodriguez',
+                  position: 'Product Manager, InnovateTech',
+                  content: 'The mobile app developed by NeuraForge has received outstanding feedback from our users. Their attention to detail and user experience focus made all the difference.',
+                  image: 'https://randomuser.me/api/portraits/women/68.jpg'
+              }
+          ],
+          caseStudies: [
+              {
+                  id: 1,
+                  title: 'AI-Powered Customer Service Platform',
+                  client: 'Global Retail Chain',
+                  category: 'ai',
+                  image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                  brief: 'Developed an intelligent customer service platform that reduced response times by 78%.',
+                  challenge: 'The client was struggling with high customer service response times and inconsistent service quality across their global operations.',
+                  solution: 'We developed an AI-powered platform using natural language processing and machine learning algorithms to handle common customer inquiries automatically.',
+                  results: [
+                      '78% reduction in average response time',
+                      '45% increase in customer satisfaction scores',
+                      '30% reduction in customer service staffing costs'
+                  ]
+              },
+              {
+                  id: 2,
+                  title: 'Secure Banking Mobile Application',
+                  client: 'FinTech Startup',
+                  category: 'development',
+                  image: 'https://images.unsplash.com/photo-1563014959-7aaa83350992?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                  brief: 'Created a secure, user-friendly mobile banking application with advanced biometric authentication.',
+                  challenge: 'The startup needed a secure mobile banking solution that could compete with established players while meeting strict financial regulations.',
+                  solution: 'We built a cross-platform mobile application with end-to-end encryption, biometric authentication, and real-time transaction monitoring.',
+                  results: [
+                      '100% compliance with financial regulations',
+                      '4.8/5 average app store rating',
+                      '50,000+ active users in first 3 months'
+                  ]
+              },
+              {
+                  id: 3,
+                  title: 'Cybersecurity Infrastructure Overhaul',
+                  client: 'Healthcare Provider Network',
+                  category: 'security',
+                  image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                  brief: 'Implemented comprehensive security measures that prevented data breaches and ensured HIPAA compliance.',
+                  challenge: 'The healthcare provider needed to secure sensitive patient data and meet HIPAA compliance requirements after experiencing security vulnerabilities.',
+                  solution: 'We conducted a full security audit, implemented multi-layered security protocols, and trained staff on security best practices.',
+                  results: [
+                      'Zero security breaches since implementation',
+                      'Achieved full HIPAA compliance',
+                      '98% reduction in security incident reports'
+                  ]
+              }
+          ],
+          team: [
+              {
+                  id: 1,
+                  name: 'Dr. Alex Morgan',
+                  position: 'Chief AI Officer',
+                  bio: 'Ph.D. in Machine Learning with 15+ years of experience in AI research and implementation.',
+                  image: 'https://randomuser.me/api/portraits/men/22.jpg',
+                  social: {
+                      twitter: '#',
+                      linkedin: '#',
+                      github: '#'
+                  }
+              },
+              {
+                  id: 2,
+                  name: 'Sophia Chen',
+                  position: 'Lead Software Architect',
+                  bio: 'Expert in scalable software architecture with a background in cloud computing and distributed systems.',
+                  image: 'https://randomuser.me/api/portraits/women/44.jpg',
+                  social: {
+                      twitter: '#',
+                      linkedin: '#',
+                      github: '#'
+                  }
+              },
+              {
+                  id: 3,
+                  name: 'Marcus Williams',
+                  position: 'Cybersecurity Director',
+                  bio: 'Certified security professional with experience protecting Fortune 500 companies from cyber threats.',
+                  image: 'https://randomuser.me/api/portraits/men/64.jpg',
+                  social: {
+                      twitter: '#',
+                      linkedin: '#',
+                      github: '#'
+                  }
+              },
+              {
+                  id: 4,
+                  name: 'Olivia Patel',
+                  position: 'UX/UI Design Lead',
+                  bio: 'Award-winning designer focused on creating intuitive and accessible user experiences.',
+                  image: 'https://randomuser.me/api/portraits/women/65.jpg',
+                  social: {
+                      twitter: '#',
+                      linkedin: '#',
+                      dribbble: '#'
+                  }
+              }
+          ],
+          blogPosts: [
+              {
+                  id: 1,
+                  title: 'The Future of AI Agents in Business Operations',
+                  excerpt: 'Exploring how intelligent agents are revolutionizing workflow automation and decision support systems.',
+                  date: 'June 15, 2023',
+                  author: 'Dr. Alex Morgan',
+                  category: 'AI Technology',
+                  image: 'https://images.unsplash.com/photo-1677442135722-5fbfade9edf0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+              },
+              {
+                  id: 2,
+                  title: 'Securing Your Digital Infrastructure: Best Practices',
+                  excerpt: 'Essential cybersecurity measures every organization should implement to protect against evolving threats.',
+                  date: 'May 28, 2023',
+                  author: 'Marcus Williams',
+                  category: 'Cybersecurity',
+                  image: 'https://images.unsplash.com/photo-1560807707-8cc77767d783?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+              },
+              {
+                  id: 3,
+                  title: 'Progressive Web Apps vs. Native Apps: Making the Right Choice',
+                  excerpt: 'A comprehensive comparison to help businesses decide which mobile development approach best suits their needs.',
+                  date: 'April 10, 2023',
+                  author: 'Sophia Chen',
+                  category: 'App Development',
+                  image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+              }
+          ],
+          pricingPlans: [
+              {
+                  id: 1,
+                  name: 'Startup',
+                  price: '$2,500',
+                  billing: 'per project',
+                  features: [
+                      'Basic AI integration',
+                      'Responsive web development',
+                      'Standard security features',
+                      '30-day support',
+                      'Single platform app'
+                  ],
+                  recommended: false
+              },
+              {
+                  id: 2,
+                  name: 'Business',
+                  price: '$5,000',
+                  billing: 'per project',
+                  features: [
+                      'Advanced AI solutions',
+                      'Full-stack web development',
+                      'Enhanced security protocols',
+                      '90-day support',
+                      'Cross-platform app development',
+                      'Basic analytics integration'
+                  ],
+                  recommended: true
+              },
+              {
+                  id: 3,
+                  name: 'Enterprise',
+                  price: 'Custom',
+                  billing: 'tailored solution',
+                  features: [
+                      'Custom AI agent development',
+                      'Enterprise-grade web solutions',
+                      'Comprehensive security suite',
+                      'Dedicated support team',
+                      'Native app development',
+                      'Advanced analytics & reporting',
+                      'System integration services'
+                  ],
+                  recommended: false
+              }
+          ],
+          contactForm: {
+              name: '',
+              email: '',
+              company: '',
+              message: '',
+              service: ''
+          },
+          selectedCaseStudy: null,
+          showPage(page) {
+              this.currentPage = page;
+              window.scrollTo(0, 0);
+          },
+          filterServices(category) {
+              this.serviceFilter = category;
+          },
+          isServiceVisible(service) {
+              return this.serviceFilter === 'all' || service.category === this.serviceFilter;
+          },
+          animateProcessFlow() {
+              const steps = document.querySelectorAll('.process-step');
+              steps.forEach((step, index) => {
+                  setTimeout(() => {
+                      step.classList.add('fade-in');
+                  }, index * 300);
+              });
+          },
+          submitContactForm() {
+              // Form validation
+              if (!this.contactForm.name || !this.contactForm.email || !this.contactForm.message) {
+                  alert('Please fill in all required fields');
+                  return;
+              }
+              
+              // Simulate form submission
+              alert('Thank you for your message! We will contact you shortly.');
+              
+              // Reset form
+              this.contactForm = {
+                  name: '',
+                  email: '',
+                  company: '',
+                  message: '',
+                  service: ''
+              };
+          },
+          selectCaseStudy(study) {
+              this.selectedCaseStudy = study;
+              this.showPage('case-study-detail');
+          }
+      }"
+      x-init="animateProcessFlow()">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-gray-900 bg-opacity-95 backdrop-blur-sm border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <div class="h-10 w-10 rounded-full bg-gradient-primary flex items-center justify-center mr-2">
+                            <span class="font-tech font-bold text-white">NF</span>
+                        </div>
+                        <span class="font-tech font-bold text-xl text-white">NeuraForge<span class="text-gradient">Technologies</span></span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a @click="showPage('home')" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium cursor-pointer" :class="{'text-secondary': currentPage === 'home'}">Home</a>
+                    <a @click="showPage('services')" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium cursor-pointer" :class="{'text-secondary': currentPage === 'services'}">Services</a>
+                    <a @click="showPage('case-studies')" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium cursor-pointer" :class="{'text-secondary': currentPage === 'case-studies'}">Case Studies</a>
+                    <a @click="showPage('team')" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium cursor-pointer" :class="{'text-secondary': currentPage === 'team'}">Team</a>
+                    <a @click="showPage('blog')" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium cursor-pointer" :class="{'text-secondary': currentPage === 'blog'}">Blog</a>
+                    <a @click="showPage('pricing')" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium cursor-pointer" :class="{'text-secondary': currentPage === 'pricing'}">Pricing</a>
+                    <a @click="showPage('contact')" class="ml-4 px-4 py-2 rounded-md text-sm font-medium text-white bg-gradient-primary hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer">Contact Us</a>
+                </div>
+                <div class="flex md:hidden items-center">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div x-show="mobileMenuOpen" class="md:hidden bg-gray-900 border-b border-gray-800" 
+             x-transition:enter="transition ease-out duration-200" 
+             x-transition:enter-start="opacity-0 transform scale-95" 
+             x-transition:enter-end="opacity-100 transform scale-100" 
+             x-transition:leave="transition ease-in duration-150" 
+             x-transition:leave-start="opacity-100 transform scale-100" 
+             x-transition:leave-end="opacity-0 transform scale-95">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a @click="showPage('home'); mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 cursor-pointer" :class="{'bg-gray-800 text-white': currentPage === 'home'}">Home</a>
+                <a @click="showPage('services'); mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 cursor-pointer" :class="{'bg-gray-800 text-white': currentPage === 'services'}">Services</a>
+                <a @click="showPage('case-studies'); mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 cursor-pointer" :class="{'bg-gray-800 text-white': currentPage === 'case-studies'}">Case Studies</a>
+                <a @click="showPage('team'); mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 cursor-pointer" :class="{'bg-gray-800 text-white': currentPage === 'team'}">Team</a>
+                <a @click="showPage('blog'); mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 cursor-pointer" :class="{'bg-gray-800 text-white': currentPage === 'blog'}">Blog</a>
+                <a @click="showPage('pricing'); mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 cursor-pointer" :class="{'bg-gray-800 text-white': currentPage === 'pricing'}">Pricing</a>
+                <a @click="showPage('contact'); mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gradient-primary hover:bg-opacity-90 cursor-pointer">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-16">
+        <!-- Home Page -->
+        <div x-show="currentPage === 'home'" class="page-transition fade-in">
+            <!-- Hero Section -->
+            <section class="relative bg-gray-900 overflow-hidden">
+                <div class="absolute inset-0 z-0">
+                    <svg class="absolute left-0 top-0 h-full w-full" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.2" filter="url(#filter0_f)">
+                            <circle cx="400" cy="100" r="150" fill="#4cc9f0" />
+                            <circle cx="1100" cy="300" r="250" fill="#7209b7" />
+                            <circle cx="700" cy="600" r="200" fill="#3a0ca3" />
+                        </g>
+                        <defs>
+                            <filter id="filter0_f" x="-400" y="-400" width="2200" height="1600" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                                <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur"/>
+                            </filter>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 relative z-10">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                        <div class="slide-in-left">
+                            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold font-tech mb-6">
+                                <span class="text-white">Forge the Future with</span>
+                                <span class="text-gradient block">Intelligent Technology</span>
+                            </h1>
+                            <p class="text-xl text-gray-300 mb-8">We build cutting-edge AI solutions and software that transform businesses and drive innovation.</p>
+                            <div class="flex flex-wrap gap-4">
+                                <button @click="showPage('services')" class="px-6 py-3 rounded-md text-white bg-gradient-primary hover:opacity-90 transition-all font-medium">
+                                    Explore Our Services
+                                </button>
+                                <button @click="showPage('case-studies')" class="px-6 py-3 rounded-md text-white border-2 border-indigo-500 hover:bg-indigo-500 hover:bg-opacity-20 transition-all font-medium">
+                                    View Case Studies
+                                </button>
+                            </div>
+                            <div class="mt-12 flex items-center space-x-6">
+                                <div class="flex -space-x-2">
+                                    <img class="h-10 w-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+                                    <img class="h-10 w-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/44.jpg" alt="">
+                                    <img class="h-10 w-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/men/86.jpg" alt="">
+                                </div>
+                                <div class="text-sm text-gray-300">
+                                    <span class="font-semibold text-white">50+ experts</span> ready to build your solution
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="slide-in-right">
+                            <div class="relative">
+                                <svg class="w-full h-auto animate-float" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Brain Network Illustration -->
+                                    <circle cx="250" cy="200" r="80" stroke="#4cc9f0" stroke-width="2" fill="none" />
+                                    <circle cx="250" cy="200" r="120" stroke="#4cc9f0" stroke-opacity="0.5" stroke-width="1" fill="none" />
+                                    <circle cx="250" cy="200" r="160" stroke="#4cc9f0" stroke-opacity="0.2" stroke-width="1" fill="none" />
+                                    
+                                    <!-- Nodes -->
+                                    <circle cx="250" cy="200" r="8" fill="#7209b7" />
+                                    <circle cx="330" cy="200" r="6" fill="#4cc9f0" />
+                                    <circle cx="290" cy="120" r="6" fill="#4cc9f0" />
+                                    <circle cx="210" cy="120" r="6" fill="#4cc9f0" />
+                                    <circle cx="170" cy="200" r="6" fill="#4cc9f0" />
+                                    <circle cx="210" cy="280" r="6" fill="#4cc9f0" />
+                                    <circle cx="290" cy="280" r="6" fill="#4cc9f0" />
+                                    
+                                    <!-- Connections -->
+                                    <line x1="250" y1="200" x2="330" y2="200" stroke="#4cc9f0" stroke-width="2" />
+                                    <line x1="250" y1="200" x2="290" y2="120" stroke="#4cc9f0" stroke-width="2" />
+                                    <line x1="250" y1="200" x2="210" y2="120" stroke="#4cc9f0" stroke-width="2" />
+                                    <line x1="250" y1="200" x2="170" y2="200" stroke="#4cc9f0" stroke-width="2" />
+                                    <line x1="250" y1="200" x2="210" y2="280" stroke="#4cc9f0" stroke-width="2" />
+                                    <line x1="250" y1="200" x2="290" y2="280" stroke="#4cc9f0" stroke-width="2" />
+                                    
+                                    <!-- Secondary Connections -->
+                                    <line x1="290" y1="120" x2="330" y2="200" stroke="#4cc9f0" stroke-opacity="0.5" stroke-width="1" />
+                                    <line x1="210" y1="120" x2="290" y2="120" stroke="#4cc9f0" stroke-opacity="0.5" stroke-width="1" />
+                                    <line x1="170" y1="200" x2="210" y2="120" stroke="#4cc9f0" stroke-opacity="0.5" stroke-width="1" />
+                                    <line x1="170" y1="200" x2="210" y2="280" stroke="#4cc9f0" stroke-opacity="0.5" stroke-width="1" />
+                                    <line x1="210" y1="280" x2="290" y2="280" stroke="#4cc9f0" stroke-opacity="0.5" stroke-width="1" />
+                                    <line x1="290" y1="280" x2="330" y2="200" stroke="#4cc9f0" stroke-opacity="0.5" stroke-width="1" />
+                                    
+                                    <!-- Pulse Animation -->
+                                    <circle cx="250" cy="200" r="40" stroke="#7209b7" stroke-width="3" fill="none" opacity="0.7">
+                                        <animate attributeName="r" values="40;80;40" dur="4s" repeatCount="indefinite" />
+                                        <animate attributeName="opacity" values="0.7;0;0.7" dur="4s" repeatCount="indefinite" />
+                                    </circle>
+                                </svg>
+                                
+                                <!-- Floating elements -->
+                                <div class="absolute top-10 right-10 bg-gray-800 bg-opacity-80 backdrop-blur-sm p-3 rounded-lg border border-gray-700 shadow-lg animate-float" style="animation-delay: 1s;">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="h-3 w-3 rounded-full bg-green-400"></div>
+                                        <span class="text-xs font-mono text-green-400">AI Model Training</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="absolute bottom-10 left-10 bg-gray-800 bg-opacity-80 backdrop-blur-sm p-3 rounded-lg border border-gray-700 shadow-lg animate-float" style="animation-delay: 2s;">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="h-3 w-3 rounded-full bg-purple-400"></div>
+                                        <span class="text-xs font-mono text-purple-400">Neural Networks</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 bg-opacity-80 backdrop-blur-sm p-3 rounded-lg border border-gray-700 shadow-lg animate-float" style="animation-delay: 1.5s;">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="h-3 w-3 rounded-full bg-blue-400"></div>
+                                        <span class="text-xs font-mono text-blue-400">Data Processing</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Services -->
+            <section class="py-16 bg-gray-900">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl font-bold font-tech text-white mb-4">Our Core Services</h2>
+                        <p class="text-xl text-gray-400 max-w-3xl mx-auto">Leveraging cutting-edge technology to deliver exceptional solutions for your business needs.</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <template x-for="service in services.slice(0, 3)" :key="service.id">
+                            <div class="service-card bg-gray-800 bg-opacity-50 rounded-xl p-6 flex flex-col h-full border border-gray-700">
+                                <div class="h-14 w-14 rounded-lg bg-gradient-primary flex items-center justify-center mb-6">
+                                    <i :class="'fas ' + service.icon + ' text-2xl text-white'"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-3" x-text="service.title"></h3>
+                                <p class="text-gray-400 mb-6 flex-grow" x-text="service.description"></p>
+                                <a @click="showPage(service.link)" class="inline-flex items-center text-secondary hover:text-white transition-colors cursor-pointer">
+                                    <span>Learn more</span>
+                                    <svg class="ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </template>
+                    </div>
+                    
+                    <div class="text-center mt-12">
+                        <button @click="showPage('services')" class="px-6 py-3 rounded-md text-white border-2 border-indigo-500 hover:bg-indigo-500 hover:bg-opacity-20 transition-all font-medium">
+                            View All Services
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Process Flow -->
+            <section class="py-16 bg-gray-800">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl font-bold font-tech text-white mb-4">Our Development Process</h2>
+                        <p class="text-xl text-gray-400 max-w-3xl mx-auto">A systematic approach to delivering high-quality solutions that exceed expectations.</p>
+                    </div>
+                    
+                    <div class="relative">
+                        <div class="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-gray-700 transform -translate-y-1/2 z-0"></div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+                            <div class="process-step bg-gray-900 rounded-xl p-6 border border-gray-700 relative opacity-0">
+                                <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-gradient-primary flex items-center justify-center text-white font-bold">1</div>
+                                <div class="h-16 w-16 mx-auto rounded-lg bg-gray-800 flex items-center justify-center mb-4">
+                                    <i class="fas fa-lightbulb text-2xl text-secondary"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-white text-center mb-3">Discovery</h3>
+                                <p class="text-gray-400 text-center text-sm">We analyze your requirements and define project objectives to create a strategic roadmap.</p>
+                            </div>
+                            
+                            <div class="process-step bg-gray-900 rounded-xl p-6 border border-gray-700 relative opacity-0">
+                                <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-gradient-primary flex items-center justify-center text-white font-bold">2</div>
+                                <div class="h-16 w-16 mx-auto rounded-lg bg-gray-800 flex items-center justify-center mb-4">
+                                    <i class="fas fa-pencil-ruler text-2xl text-secondary"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-white text-center mb-3">Design</h3>
+                                <p class="text-gray-400 text-center text-sm">Our team creates detailed designs and architecture to ensure optimal performance and user experience.</p>
+                            </div>
+                            
+                            <div class="process-step bg-gray-900 rounded-xl p-6 border border-gray-700 relative opacity-0">
+                                <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-gradient-primary flex items-center justify-center text-white font-bold">3</div>
+                                <div class="h-16 w-16 mx-auto rounded-lg bg-gray-800 flex items-center justify-center mb-4">
+                                    <i class="fas fa-code text-2xl text-secondary"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-white text-center mb-3">Development</h3>
+                                <p class="text-gray-400 text-center text-sm">We build your solution using cutting-edge technologies and best practices in software development.</p>
+                            </div>
+                            
+                            <div class="process-step bg-gray-900 rounded-xl p-6 border border-gray-700 relative opacity-0">
+                                <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-gradient-primary flex items-center justify-center text-white font-bold">4</div>
+                                <div class="h-16 w-16 mx-auto rounded-lg bg-gray-800 flex items-center justify-center mb-4">
+                                    <i class="fas fa-rocket text-2xl text-secondary"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-white text-center mb-3">Deployment</h3>
+                                <p class="text-gray-400 text-center text-sm">We thoroughly test, deploy, and provide ongoing support to ensure your solution performs flawlessly.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Case Study -->
+            <section class="py-16 bg-gray-900">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <div class="mb-6">
+                                <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-indigo-900 text-indigo-200">Featured Case Study</span>
+                            </div>
+                            <h2 class="text-3xl font-bold font-tech text-white mb-6">AI-Powered Customer Service Platform</h2>
+                            <p class="text-gray-400 mb-6">We developed an intelligent customer service platform for a global retail chain that reduced response times by 78% and increased customer satisfaction scores by 45%.</p>
+                            
+                            <div class="mb-8 space-y-4">
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Implemented natural language processing for automated query resolution</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Developed sentiment analysis to prioritize urgent customer issues</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Created an intuitive dashboard for customer service representatives</p>
+                                </div>
+                            </div>
+                            
+                            <button @click="selectCaseStudy(caseStudies[0])" class="px-6 py-3 rounded-md text-white bg-gradient-primary hover:opacity-90 transition-all font-medium">
+                                View Full Case Study
+                            </button>
+                        </div>
+                        
+                        <div class="relative">
+                            <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 shadow-xl">
+                                <div class="flex items-center justify-between mb-6">
+                                    <div class="flex items-center">
+                                        <div class="h-10 w-10 rounded-full bg-gradient-primary flex items-center justify-center mr-3">
+                                            <i class="fas fa-headset text-white"></i>
+                                        </div>
+                                        <span class="font-bold text-white">AI Customer Service</span>
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <div class="h-3 w-3 rounded-full bg-red-500"></div>
+                                        <div class="h-3 w-3 rounded-full bg-yellow-500"></div>
+                                        <div class="h-3 w-3 rounded-full bg-green-500"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-gray-900 rounded-lg p-4 mb-4">
+                                    <div class="flex items-start mb-4">
+                                        <div class="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center mr-3 flex-shrink-0">
+                                            <span class="text-xs font-bold text-white">JD</span>
+                                        </div>
+                                        <div class="bg-blue-900 bg-opacity-50 rounded-lg p-3 text-sm text-gray-300">
+                                            I received a damaged product in my order #45892. Can I get a replacement?
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <div class="h-8 w-8 rounded-full bg-gradient-primary flex items-center justify-center mr-3 flex-shrink-0">
+                                            <i class="fas fa-robot text-xs text-white"></i>
+                                        </div>
+                                        <div class="bg-gray-800 rounded-lg p-3 text-sm text-gray-300">
+                                            I'm sorry to hear about the damaged product. I've located your order #45892 and have automatically processed a replacement request. Your new item will ship within 24 hours with priority delivery. Would you like to receive tracking updates via email or text message?
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-gray-700 bg-opacity-30 rounded-lg p-3 mb-4">
+                                    <div class="flex items-center justify-between text-xs text-gray-400 mb-2">
+                                        <span>AI Analysis</span>
+                                        <span>Confidence: 98%</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="w-1/4">
+                                            <span class="text-xs text-gray-500">Issue Type:</span>
+                                        </div>
+                                        <div class="w-3/4">
+                                            <span class="text-xs font-medium text-white">Product Damage</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="w-1/4">
+                                            <span class="text-xs text-gray-500">Sentiment:</span>
+                                        </div>
+                                        <div class="w-3/4">
+                                            <span class="text-xs font-medium text-yellow-400">Neutral with concern</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="w-1/4">
+                                            <span class="text-xs text-gray-500">Priority:</span>
+                                        </div>
+                                        <div class="w-3/4">
+                                            <span class="text-xs font-medium text-red-400">High</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex justify-between">
+                                    <button class="px-3 py-2 rounded-md text-xs font-medium text-white bg-gray-700 hover:bg-gray-600 transition-colors">
+                                        <i class="fas fa-user mr-1"></i> Transfer to Agent
+                                    </button>
+                                    <button class="px-3 py-2 rounded-md text-xs font-medium text-white bg-gradient-primary hover:opacity-90 transition-colors">
+                                        <i class="fas fa-check mr-1"></i> Resolve Issue
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Decorative elements -->
+                            <div class="absolute -top-4 -right-4 h-20 w-20 rounded-full bg-secondary bg-opacity-10 backdrop-blur-sm z-0"></div>
+                            <div class="absolute -bottom-6 -left-6 h-24 w-24 rounded-full bg-accent bg-opacity-10 backdrop-blur-sm z-0"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section class="py-16 bg-gray-800">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl font-bold font-tech text-white mb-4">What Our Clients Say</h2>
+                        <p class="text-xl text-gray-400 max-w-3xl mx-auto">Trusted by innovative companies worldwide to deliver exceptional technology solutions.</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <template x-for="testimonial in testimonials" :key="testimonial.id">
+                            <div class="testimonial-card bg-gray-900 rounded-xl p-6 border border-gray-700">
+                                <div class="flex items-center mb-6">
+                                    <img :src="testimonial.image" :alt="testimonial.name" class="h-12 w-12 rounded-full mr-4">
+                                    <div>
+                                        <h4 class="text-white font-medium" x-text="testimonial.name"></h4>
+                                        <p class="text-gray-400 text-sm" x-text="testimonial.position"></p>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <p class="text-gray-300 italic" x-text="testimonial.content"></p>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="py-16 bg-gradient-primary">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h2 class="text-3xl font-bold font-tech text-white mb-6">Ready to Transform Your Business with Intelligent Technology?</h2>
+                            <p class="text-xl text-gray-200 mb-8">Partner with NeuraForge Technologies to build innovative solutions that drive growth and efficiency.</p>
+                            <button @click="showPage('contact')" class="px-6 py-3 rounded-md text-indigo-900 bg-white hover:bg-gray-100 transition-colors font-medium">
+                                Schedule a Consultation
+                            </button>
+                        </div>
+                        
+                        <div class="relative">
+                            <svg class="w-full h-auto" viewBox="0 0 500 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Abstract tech illustration -->
+                                <rect x="100" y="50" width="300" height="200" rx="20" fill="white" fill-opacity="0.1" />
+                                <rect x="120" y="70" width="260" height="160" rx="10" fill="white" fill-opacity="0.1" />
+                                
+                                <!-- Circuit lines -->
+                                <path d="M120 120 H380" stroke="white" stroke-opacity="0.3" stroke-width="2" />
+                                <path d="M120 180 H380" stroke="white" stroke-opacity="0.3" stroke-width="2" />
+                                <path d="M200 70 V230" stroke="white" stroke-opacity="0.3" stroke-width="2" />
+                                <path d="M300 70 V230" stroke="white" stroke-opacity="0.3" stroke-width="2" />
+                                
+                                <!-- Connection points -->
+                                <circle cx="200" cy="120" r="6" fill="white" />
+                                <circle cx="300" cy="120" r="6" fill="white" />
+                                <circle cx="200" cy="180" r="6" fill="white" />
+                                <circle cx="300" cy="180" r="6" fill="white" />
+                                
+                                <!-- Animated pulse -->
+                                <circle cx="200" cy="120" r="10" stroke="white" stroke-width="2" fill="none" opacity="0.7">
+                                    <animate attributeName="r" values="10;20;10" dur="3s" repeatCount="indefinite" />
+                                    <animate attributeName="opacity" values="0.7;0;0.7" dur="3s" repeatCount="indefinite" />
+                                </circle>
+                                
+                                <circle cx="300" cy="180" r="10" stroke="white" stroke-width="2" fill="none" opacity="0.7">
+                                    <animate attributeName="r" values="10;20;10" dur="3s" repeatCount="indefinite" begin="1.5s" />
+                                    <animate attributeName="opacity" values="0.7;0;0.7" dur="3s" repeatCount="indefinite" begin="1.5s" />
+                                </circle>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Services Page -->
+        <div x-show="currentPage === 'services'" class="page-transition fade-in">
+            <!-- Services Hero -->
+            <section class="relative bg-gray-900 py-16 md:py-24">
+                <div class="absolute inset-0 z-0">
+                    <svg class="absolute left-0 top-0 h-full w-full" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.1" filter="url(#filter0_f)">
+                            <circle cx="400" cy="400" r="200" fill="#4cc9f0" />
+                            <circle cx="1100" cy="300" r="150" fill="#7209b7" />
+                        </g>
+                        <defs>
+                            <filter id="filter0_f" x="-400" y="-400" width="2200" height="1600" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                                <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur"/>
+                            </filter>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="text-center">
+                        <h1 class="text-4xl md:text-5xl font-bold font-tech text-white mb-6">Our Services</h1>
+                        <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-12">Comprehensive technology solutions designed to drive innovation and transform your business.</p>
+                        
+                        <!-- Service Filter -->
+                        <div class="flex flex-wrap justify-center gap-4 mb-12">
+                            <button @click="filterServices('all')" class="px-4 py-2 rounded-md text-sm font-medium transition-colors" :class="serviceFilter === 'all' ? 'bg-secondary text-gray-900' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'">
+                                All Services
+                            </button>
+                            <button @click="filterServices('ai')" class="px-4 py-2 rounded-md text-sm font-medium transition-colors" :class="serviceFilter === 'ai' ? 'bg-secondary text-gray-900' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'">
+                                AI Solutions
+                            </button>
+                            <button @click="filterServices('development')" class="px-4 py-2 rounded-md text-sm font-medium transition-colors" :class="serviceFilter === 'development' ? 'bg-secondary text-gray-900' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'">
+                                Development
+                            </button>
+                            <button @click="filterServices('security')" class="px-4 py-2 rounded-md text-sm font-medium transition-colors" :class="serviceFilter === 'security' ? 'bg-secondary text-gray-900' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'">
+                                Security
+                            </button>
+                            <button @click="filterServices('infrastructure')" class="px-4 py-2 rounded-md text-sm font-medium transition-colors" :class="serviceFilter === 'infrastructure' ? 'bg-secondary text-gray-900' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'">
+                                Infrastructure
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Services Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <template x-for="service in services" :key="service.id" x-show="isServiceVisible(service)">
+                            <div class="service-card bg-gray-800 bg-opacity-50 rounded-xl p-6 flex flex-col h-full border border-gray-700">
+                                <div class="h-14 w-14 rounded-lg bg-gradient-primary flex items-center justify-center mb-6">
+                                    <i :class="'fas ' + service.icon + ' text-2xl text-white'"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-3" x-text="service.title"></h3>
+                                <p class="text-gray-400 mb-6 flex-grow" x-text="service.description"></p>
+                                <a @click="showPage(service.link)" class="inline-flex items-center text-secondary hover:text-white transition-colors cursor-pointer">
+                                    <span>Learn more</span>
+                                    <svg class="ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Agents Development -->
+            <section class="py-16 bg-gray-800">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <div class="mb-6">
+                                <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-indigo-900 text-indigo-200">AI Solutions</span>
+                            </div>
+                            <h2 class="text-3xl font-bold font-tech text-white mb-6">AI Agents Development</h2>
+                            <p class="text-gray-400 mb-6">Our AI agents are designed to automate complex tasks, enhance decision-making processes, and provide intelligent interactions with users and systems. These agents can handle everything from customer service inquiries to complex data analysis.</p>
+                            
+                            <div class="mb-8 space-y-4">
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Conversational AI agents for customer service and support</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Intelligent process automation for business workflows</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Decision support systems with predictive analytics</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Personalized recommendation engines</p>
+                                </div>
+                            </div>
+                            
+                            <button @click="showPage('contact')" class="px-6 py-3 rounded-md text-white bg-gradient-primary hover:opacity-90 transition-all font-medium">
+                                Request a Consultation
+                            </button>
+                        </div>
+                        
+                        <div class="relative">
+                            <div class="bg-gray-900 rounded-xl p-8 border border-gray-700">
+                                <svg class="w-full h-auto" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Robot/AI Agent Illustration -->
+                                    <circle cx="200" cy="100" r="50" fill="#3a0ca3" opacity="0.8" />
+                                    <circle cx="200" cy="100" r="40" fill="#4cc9f0" opacity="0.6" />
+                                    <circle cx="185" cy="90" r="5" fill="white" />
+                                    <circle cx="215" cy="90" r="5" fill="white" />
+                                    
+                                    <!-- Body -->
+                                    <rect x="170" y="150" width="60" height="80" rx="10" fill="#3a0ca3" opacity="0.8" />
+                                    <rect x="180" y="150" width="40" height="60" rx="5" fill="#4cc9f0" opacity="0.6" />
+                                    
+                                    <!-- Arms -->
+                                    <rect x="150" y="160" width="20" height="60" rx="10" fill="#3a0ca3" opacity="0.8" />
+                                    <rect x="230" y="160" width="20" height="60" rx="10" fill="#3a0ca3" opacity="0.8" />
+                                    
+                                    <!-- Connection lines -->
+                                    <line x1="100" y1="80" x2="150" y2="100" stroke="#4cc9f0" stroke-width="2" stroke-dasharray="4" />
+                                    <line x1="300" y1="80" x2="250" y2="100" stroke="#4cc9f0" stroke-width="2" stroke-dasharray="4" />
+                                    <line x1="100" y1="200" x2="150" y2="180" stroke="#4cc9f0" stroke-width="2" stroke-dasharray="4" />
+                                    <line x1="300" y1="200" x2="250" y2="180" stroke="#4cc9f0" stroke-width="2" stroke-dasharray="4" />
+                                    
+                                    <!-- Data nodes -->
+                                    <circle cx="100" cy="80" r="15" fill="#7209b7" opacity="0.8" />
+                                    <text x="100" y="84" text-anchor="middle" fill="white" font-size="10">Data</text>
+                                    
+                                    <circle cx="300" cy="80" r="15" fill="#7209b7" opacity="0.8" />
+                                    <text x="300" y="84" text-anchor="middle" fill="white" font-size="10">API</text>
+                                    
+                                    <circle cx="100" cy="200" r="15" fill="#7209b7" opacity="0.8" />
+                                    <text x="100" y="204" text-anchor="middle" fill="white" font-size="10">ML</text>
+                                    
+                                    <circle cx="300" cy="200" r="15" fill="#7209b7" opacity="0.8" />
+                                    <text x="300" y="204" text-anchor="middle" fill="white" font-size="10">UI</text>
+                                    
+                                    <!-- Pulse animation -->
+                                    <circle cx="200" cy="100" r="60" stroke="#7209b7" stroke-width="2" fill="none" opacity="0.5">
+                                        <animate attributeName="r" values="60;70;60" dur="3s" repeatCount="indefinite" />
+                                        <animate attributeName="opacity" values="0.5;0;0.5" dur="3s" repeatCount="indefinite" />
+                                    </circle>
+                                </svg>
+                                
+                                <div class="mt-6">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-sm font-medium text-white">AI Agent Learning Progress</span>
+                                        <span class="text-sm font-medium text-secondary">78%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                        <div class="bg-secondary h-2.5 rounded-full" style="width: 78%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Decorative elements -->
+                            <div class="absolute -top-4 -right-4 h-20 w-20 rounded-full bg-secondary bg-opacity-10 backdrop-blur-sm z-0"></div>
+                            <div class="absolute -bottom-6 -left-6 h-24 w-24 rounded-full bg-accent bg-opacity-10 backdrop-blur-sm z-0"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Web Development -->
+            <section class="py-16 bg-gray-900">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div class="order-2 lg:order-1 relative">
+                            <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 shadow-xl">
+                                <div class="flex items-center justify-between mb-6">
+                                    <div class="flex items-center">
+                                        <div class="h-10 w-10 rounded-full bg-gradient-primary flex items-center justify-center mr-3">
+                                            <i class="fas fa-code text-white"></i>
+                                        </div>
+                                        <span class="font-bold text-white">Web Development</span>
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <div class="h-3 w-3 rounded-full bg-red-500"></div>
+                                        <div class="h-3 w-3 rounded-full bg-yellow-500"></div>
+                                        <div class="h-3 w-3 rounded-full bg-green-500"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="grid grid-cols-2 gap-4 mb-6">
+                                    <div class="bg-gray-900 rounded-lg p-4 border border-gray-700">
+                                        <div class="flex items-center mb-3">
+                                            <i class="fab fa-react text-blue-400 mr-2"></i>
+                                            <span class="text-sm font-medium text-white">React</span>
+                                        </div>
+                                        <div class="w-full bg-gray-700 rounded-full h-1.5 mb-1">
+                                            <div class="bg-blue-400 h-1.5 rounded-full" style="width: 95%"></div>
+                                        </div>
+                                        <span class="text-xs text-gray-400">Expert</span>
+                                    </div>
+                                    
+                                    <div class="bg-gray-900 rounded-lg p-4 border border-gray-700">
+                                        <div class="flex items-center mb-3">
+                                            <i class="fab fa-vuejs text-green-400 mr-2"></i>
+                                            <span class="text-sm font-medium text-white">Vue.js</span>
+                                        </div>
+                                        <div class="w-full bg-gray-700 rounded-full h-1.5 mb-1">
+                                            <div class="bg-green-400 h-1.5 rounded-full" style="width: 90%"></div>
+                                        </div>
+                                        <span class="text-xs text-gray-400">Expert</span>
+                                    </div>
+                                    
+                                    <div class="bg-gray-900 rounded-lg p-4 border border-gray-700">
+                                        <div class="flex items-center mb-3">
+                                            <i class="fab fa-node-js text-yellow-400 mr-2"></i>
+                                            <span class="text-sm font-medium text-white">Node.js</span>
+                                        </div>
+                                        <div class="w-full bg-gray-700 rounded-full h-1.5 mb-1">
+                                            <div class="bg-yellow-400 h-1.5 rounded-full" style="width: 92%"></div>
+                                        </div>
+                                        <span class="text-xs text-gray-400">Expert</span>
+                                    </div>
+                                    
+                                    <div class="bg-gray-900 rounded-lg p-4 border border-gray-700">
+                                        <div class="flex items-center mb-3">
+                                            <i class="fab fa-angular text-red-400 mr-2"></i>
+                                            <span class="text-sm font-medium text-white">Angular</span>
+                                        </div>
+                                        <div class="w-full bg-gray-700 rounded-full h-1.5 mb-1">
+                                            <div class="bg-red-400 h-1.5 rounded-full" style="width: 88%"></div>
+                                        </div>
+                                        <span class="text-xs text-gray-400">Advanced</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-gray-900 rounded-lg p-4 border border-gray-700 mb-6">
+                                    <div class="text-xs text-gray-400 mb-2">Sample Code</div>
+                                    <pre class="text-xs text-gray-300 font-mono overflow-x-auto"><code>import React, { useState, useEffect } from 'react';
+import { fetchData } from './api';
+
+function App() {
+  const [data, setData] = useState([]);
+  
+  useEffect(() => {
+    fetchData().then(result => {
+      setData(result);
+    });
+  }, []);
+  
+  return (
+    &lt;div className="app"&gt;
+      {data.map(item => (
+        &lt;div key={item.id}&gt;{item.name}&lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                </div>
+                                
+                                <div class="flex justify-between">
+                                    <div class="text-sm text-gray-400">
+                                        <i class="fas fa-check-circle text-green-400 mr-1"></i> Responsive
+                                    </div>
+                                    <div class="text-sm text-gray-400">
+                                        <i class="fas fa-check-circle text-green-400 mr-1"></i> Optimized
+                                    </div>
+                                    <div class="text-sm text-gray-400">
+                                        <i class="fas fa-check-circle text-green-400 mr-1"></i> Accessible
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Decorative elements -->
+                            <div class="absolute -top-4 -left-4 h-20 w-20 rounded-full bg-secondary bg-opacity-10 backdrop-blur-sm z-0"></div>
+                            <div class="absolute -bottom-6 -right-6 h-24 w-24 rounded-full bg-accent bg-opacity-10 backdrop-blur-sm z-0"></div>
+                        </div>
+                        
+                        <div class="order-1 lg:order-2">
+                            <div class="mb-6">
+                                <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-indigo-900 text-indigo-200">Development</span>
+                            </div>
+                            <h2 class="text-3xl font-bold font-tech text-white mb-6">Web Development</h2>
+                            <p class="text-gray-400 mb-6">We create responsive, high-performance websites and web applications that deliver exceptional user experiences and drive business results.</p>
+                            
+                            <div class="mb-8 space-y-4">
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Custom web application development with modern frameworks</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">E-commerce solutions with secure payment integration</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Progressive Web Apps (PWAs) for cross-platform functionality</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Content Management Systems (CMS) for easy content updates</p>
+                                </div>
+                            </div>
+                            
+                            <button @click="showPage('contact')" class="px-6 py-3 rounded-md text-white bg-gradient-primary hover:opacity-90 transition-all font-medium">
+                                Discuss Your Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cybersecurity Services -->
+            <section class="py-16 bg-gray-800">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <div class="mb-6">
+                                <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-indigo-900 text-indigo-200">Security</span>
+                            </div>
+                            <h2 class="text-3xl font-bold font-tech text-white mb-6">Cybersecurity Services</h2>
+                            <p class="text-gray-400 mb-6">Protect your digital assets with our comprehensive cybersecurity solutions designed to identify vulnerabilities, prevent breaches, and ensure regulatory compliance.</p>
+                            
+                            <div class="mb-8 space-y-4">
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Security audits and vulnerability assessments</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Penetration testing and ethical hacking</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Incident response planning and management</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Security awareness training for employees</p>
+                                </div>
+                            </div>
+                            
+                            <button @click="showPage('contact')" class="px-6 py-3 rounded-md text-white bg-gradient-primary hover:opacity-90 transition-all font-medium">
+                                Secure Your Business
+                            </button>
+                        </div>
+                        
+                        <div class="relative">
+                            <div class="bg-gray-900 rounded-xl p-6 border border-gray-700 shadow-xl">
+                                <div class="flex items-center justify-between mb-6">
+                                    <div class="flex items-center">
+                                        <div class="h-10 w-10 rounded-full bg-gradient-primary flex items-center justify-center mr-3">
+                                            <i class="fas fa-shield-alt text-white"></i>
+                                        </div>
+                                        <span class="font-bold text-white">Security Dashboard</span>
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <div class="h-3 w-3 rounded-full bg-green-500"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="grid grid-cols-2 gap-4 mb-6">
+                                    <div class="bg-gray-800 rounded-lg p-4">
+                                        <div class="text-sm text-gray-400 mb-2">Threat Detection</div>
+                                        <div class="text-2xl font-bold text-green-400">98%</div>
+                                    </div>
+                                    <div class="bg-gray-800 rounded-lg p-4">
+                                        <div class="text-sm text-gray-400 mb-2">Vulnerabilities</div>
+                                        <div class="text-2xl font-bold text-red-400">12</div>
+                                    </div>
+                                    <div class="bg-gray-800 rounded-lg p-4">
+                                        <div class="text-sm text-gray-400 mb-2">Incidents</div>
+                                        <div class="text-2xl font-bold text-yellow-400">3</div>
+                                    </div>
+                                    <div class="bg-gray-800 rounded-lg p-4">
+                                        <div class="text-sm text-gray-400 mb-2">Compliance</div>
+                                        <div class="text-2xl font-bold text-green-400">100%</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-6">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-sm font-medium text-white">Security Health</span>
+                                        <span class="text-sm font-medium text-green-400">Excellent</span>
+                                    </div>
+                                    <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                        <div class="bg-green-500 h-2.5 rounded-full" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex justify-between">
+                                    <button class="px-3 py-2 rounded-md text-xs font-medium text-white bg-gray-700 hover:bg-gray-600 transition-colors">
+                                        <i class="fas fa-sync mr-1"></i> Run Scan
+                                    </button>
+                                    <button class="px-3 py-2 rounded-md text-xs font-medium text-white bg-gradient-primary hover:opacity-90 transition-colors">
+                                        <i class="fas fa-file-download mr-1"></i> Generate Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Service Pages -->
+        <!-- AI Agents Development Page -->
+        <div x-show="currentPage === 'ai-agents'" class="page-transition fade-in">
+            <section class="relative service-hero bg-gradient-primary pt-24 pb-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="text-center">
+                        <h1 class="text-4xl md:text-5xl font-bold font-tech text-white mb-6">AI Agents Development</h1>
+                        <p class="text-xl text-gray-200 max-w-3xl mx-auto mb-12">Custom intelligent agents that automate tasks and enhance decision-making processes.</p>
+                        <button @click="showPage('contact')" class="px-6 py-3 rounded-md text-indigo-900 bg-white hover:bg-gray-100 transition-colors font-medium">
+                            Get Started
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-16 bg-gray-900">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h2 class="text-3xl font-bold font-tech text-white mb-6">Intelligent Automation Solutions</h2>
+                            <p class="text-gray-400 mb-6">Our AI agents are designed to automate complex tasks, enhance decision-making processes, and provide intelligent interactions with users and systems. These agents can handle everything from customer service inquiries to complex data analysis.</p>
+                            
+                            <div class="mb-8 space-y-4">
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Conversational AI agents for customer service and support</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Intelligent process automation for business workflows</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Decision support systems with predictive analytics</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Personalized recommendation engines</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative">
+                            <div class="bg-gray-800 rounded-xl p-8 border border-gray-700">
+                                <div class="flex items-center justify-between mb-6">
+                                    <h3 class="text-xl font-bold text-white">AI Agent Capabilities</h3>
+                                    <div class="h-10 w-10 rounded-full bg-gradient-primary flex items-center justify-center">
+                                        <i class="fas fa-robot text-white"></i>
+                                    </div>
+                                </div>
+                                
+                                <div class="space-y-4">
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-sm font-medium text-white">Natural Language Understanding</span>
+                                            <span class="text-sm font-medium text-white">95%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                            <div class="bg-secondary h-2.5 rounded-full" style="width: 95%"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-sm font-medium text-white">Task Automation</span>
+                                            <span class="text-sm font-medium text-white">90%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                            <div class="bg-green-500 h-2.5 rounded-full" style="width: 90%"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-sm font-medium text-white">Decision Accuracy</span>
+                                            <span class="text-sm font-medium text-white">92%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                            <div class="bg-blue-500 h-2.5 rounded-full" style="width: 92%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="py-16 bg-gray-800">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-bold font-tech text-white mb-6 text-center">Implementation Process</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-gray-900 rounded-xl p-6 border border-gray-700 text-center">
+                            <div class="h-16 w-16 rounded-lg bg-gradient-primary flex items-center justify-center mb-6 mx-auto">
+                                <i class="fas fa-lightbulb text-2xl text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Requirement Analysis</h3>
+                            <p class="text-gray-400">We work closely with you to understand your business needs and define the scope of your AI agent solution.</p>
+                        </div>
+                        
+                        <div class="bg-gray-900 rounded-xl p-6 border border-gray-700 text-center">
+                            <div class="h-16 w-16 rounded-lg bg-gradient-primary flex items-center justify-center mb-6 mx-auto">
+                                <i class="fas fa-cogs text-2xl text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Agent Development</h3>
+                            <p class="text-gray-400">Our team designs and builds your custom AI agent using state-of-the-art machine learning techniques.</p>
+                        </div>
+                        
+                        <div class="bg-gray-900 rounded-xl p-6 border border-gray-700 text-center">
+                            <div class="h-16 w-16 rounded-lg bg-gradient-primary flex items-center justify-center mb-6 mx-auto">
+                                <i class="fas fa-rocket text-2xl text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Deployment & Integration</h3>
+                            <p class="text-gray-400">We deploy your AI agent and integrate it seamlessly with your existing systems and workflows.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="py-16 bg-gray-900">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h2 class="text-3xl font-bold font-tech text-white mb-6">Ready to Automate Your Business?</h2>
+                    <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-8">Let our AI experts help you build intelligent agents that transform your operations.</p>
+                    <button @click="showPage('contact')" class="px-6 py-3 rounded-md text-white bg-gradient-primary hover:opacity-90 font-medium">
+                        Get Started Today
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <!-- AI Software Development Page -->
+        <div x-show="currentPage === 'ai-software'" class="page-transition fade-in">
+            <section class="relative service-hero bg-gradient-primary pt-24 pb-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="text-center">
+                        <h1 class="text-4xl md:text-5xl font-bold font-tech text-white mb-6">AI Software Development</h1>
+                        <p class="text-xl text-gray-200 max-w-3xl mx-auto mb-12">Cutting-edge AI solutions tailored to your business needs with machine learning integration.</p>
+                        <button @click="showPage('contact')" class="px-6 py-3 rounded-md text-indigo-900 bg-white hover:bg-gray-100 transition-colors font-medium">
+                            Get Started
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-16 bg-gray-900">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h2 class="text-3xl font-bold font-tech text-white mb-6">Transform Your Business with AI</h2>
+                            <p class="text-gray-400 mb-6">We develop custom AI software solutions that leverage machine learning, natural language processing, and computer vision to solve complex business challenges. Our solutions are designed to integrate seamlessly with your existing systems.</p>
+                            
+                            <div class="mb-8 space-y-4">
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Machine learning models for predictive analytics</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Natural language processing for text analysis</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Computer vision for image and video analysis</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">AI-powered recommendation systems</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative">
+                            <div class="bg-gray-800 rounded-xl p-8 border border-gray-700">
+                                <div class="flex items-center justify-between mb-6">
+                                    <h3 class="text-xl font-bold text-white">AI Development Expertise</h3>
+                                    <div class="h-10 w-10 rounded-full bg-gradient-primary flex items-center justify-center">
+                                        <i class="fas fa-brain text-white"></i>
+                                    </div>
+                                </div>
+                                
+                                <div class="space-y-4">
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-sm font-medium text-white">Machine Learning</span>
+                                            <span class="text-sm font-medium text-white">Expert</span>
+                                        </div>
+                                        <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                            <div class="bg-secondary h-2.5 rounded-full" style="width: 95%"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-sm font-medium text-white">Natural Language Processing</span>
+                                            <span class="text-sm font-medium text-white">Advanced</span>
+                                        </div>
+                                        <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                            <div class="bg-green-500 h-2.5 rounded-full" style="width: 90%"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-sm font-medium text-white">Computer Vision</span>
+                                            <span class="text-sm font-medium text-white">Advanced</span>
+                                        </div>
+                                        <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                            <div class="bg-blue-500 h-2.5 rounded-full" style="width: 88%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="py-16 bg-gray-800">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h2 class="text-3xl font-bold font-tech text-white mb-6">Ready to Transform Your Business?</h2>
+                    <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-8">Our AI experts are ready to help you build intelligent solutions that drive innovation.</p>
+                    <button @click="showPage('contact')" class="px-6 py-3 rounded-md text-white bg-gradient-primary hover:opacity-90 font-medium">
+                        Contact Our Team
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Web Development Page -->
+        <div x-show="currentPage === 'web-development'" class="page-transition fade-in">
+            <section class="relative service-hero bg-gradient-primary pt-24 pb-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="text-center">
+                        <h1 class="text-4xl md:text-5xl font-bold font-tech text-white mb-6">Web Development</h1>
+                        <p class="text-xl text-gray-200 max-w-3xl mx-auto mb-12">Responsive, high-performance websites and web applications with modern frameworks.</p>
+                        <button @click="showPage('contact')" class="px-6 py-3 rounded-md text-indigo-900 bg-white hover:bg-gray-100 transition-colors font-medium">
+                            Get Started
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-16 bg-gray-900">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h2 class="text-3xl font-bold font-tech text-white mb-6">Modern Web Solutions</h2>
+                            <p class="text-gray-400 mb-6">We create responsive, high-performance websites and web applications that deliver exceptional user experiences and drive business results. Our solutions are built with the latest technologies and best practices.</p>
+                            
+                            <div class="mb-8 space-y-4">
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Custom web application development with modern frameworks</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">E-commerce solutions with secure payment integration</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Progressive Web Apps (PWAs) for cross-platform functionality</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Content Management Systems (CMS) for easy content updates</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative">
+                            <div class="bg-gray-800 rounded-xl p-8 border border-gray-700">
+                                <div class="flex items-center justify-between mb-6">
+                                    <h3 class="text-xl font-bold text-white">Web Development Stack</h3>
+                                    <div class="h-10 w-10 rounded-full bg-gradient-primary flex items-center justify-center">
+                                        <i class="fas fa-code text-white"></i>
+                                    </div>
+                                </div>
+                                
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="flex items-center">
+                                        <i class="fab fa-react text-blue-400 mr-3 text-xl"></i>
+                                        <span class="text-white">React</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fab fa-vuejs text-green-400 mr-3 text-xl"></i>
+                                        <span class="text-white">Vue.js</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fab fa-angular text-red-400 mr-3 text-xl"></i>
+                                        <span class="text-white">Angular</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fab fa-node-js text-green-500 mr-3 text-xl"></i>
+                                        <span class="text-white">Node.js</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fab fa-js text-yellow-400 mr-3 text-xl"></i>
+                                        <span class="text-white">JavaScript</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fab fa-python text-blue-500 mr-3 text-xl"></i>
+                                        <span class="text-white">Python</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="py-16 bg-gray-800">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h2 class="text-3xl font-bold font-tech text-white mb-6">Ready to Build Your Web Solution?</h2>
+                    <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-8">Our web development experts are ready to bring your vision to life.</p>
+                    <button @click="showPage('contact')" class="px-6 py-3 rounded-md text-white bg-gradient-primary hover:opacity-90 font-medium">
+                        Start Your Project
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <!-- App Development Page -->
+        <div x-show="currentPage === 'app-development'" class="page-transition fade-in">
+            <section class="relative service-hero bg-gradient-primary pt-24 pb-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="text-center">
+                        <h1 class="text-4xl md:text-5xl font-bold font-tech text-white mb-6">App Development</h1>
+                        <p class="text-xl text-gray-200 max-w-3xl mx-auto mb-12">Native and cross-platform mobile applications for iOS and Android devices.</p>
+                        <button @click="showPage('contact')" class="px-6 py-3 rounded-md text-indigo-900 bg-white hover:bg-gray-100 transition-colors font-medium">
+                            Get Started
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-16 bg-gray-900">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h2 class="text-3xl font-bold font-tech text-white mb-6">Mobile Solutions for Every Platform</h2>
+                            <p class="text-gray-400 mb-6">We develop high-performance mobile applications that provide exceptional user experiences across all devices. Our solutions are tailored to meet your specific business requirements and user needs.</p>
+                            
+                            <div class="mb-8 space-y-4">
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Native iOS and Android app development</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Cross-platform development with React Native and Flutter</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Enterprise mobile solutions with backend integration</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">App maintenance and support services</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative">
+                            <div class="bg-gray-800 rounded-xl p-8 border border-gray-700">
+                                <div class="flex items-center justify-between mb-6">
+                                    <h3 class="text-xl font-bold text-white">App Development Platforms</h3>
+                                    <div class="h-10 w-10 rounded-full bg-gradient-primary flex items-center justify-center">
+                                        <i class="fas fa-mobile-alt text-white"></i>
+                                    </div>
+                                </div>
+                                
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="flex items-center">
+                                        <i class="fab fa-apple text-gray-300 mr-3 text-xl"></i>
+                                        <span class="text-white">iOS</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fab fa-android text-green-400 mr-3 text-xl"></i>
+                                        <span class="text-white">Android</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fab fa-react text-blue-400 mr-3 text-xl"></i>
+                                        <span class="text-white">React Native</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-feather text-blue-500 mr-3 text-xl"></i>
+                                        <span class="text-white">Flutter</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="py-16 bg-gray-800">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h2 class="text-3xl font-bold font-tech text-white mb-6">Ready to Build Your Mobile App?</h2>
+                    <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-8">Our app development team is ready to create the perfect solution for your business.</p>
+                    <button @click="showPage('contact')" class="px-6 py-3 rounded-md text-white bg-gradient-primary hover:opacity-90 font-medium">
+                        Start Your Project
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Cybersecurity Services Page -->
+        <div x-show="currentPage === 'cybersecurity'" class="page-transition fade-in">
+            <section class="relative service-hero bg-gradient-primary pt-24 pb-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="text-center">
+                        <h1 class="text-4xl md:text-5xl font-bold font-tech text-white mb-6">Cybersecurity Services</h1>
+                        <p class="text-xl text-gray-200 max-w-3xl mx-auto mb-12">Comprehensive security solutions to protect your digital assets and infrastructure.</p>
+                        <button @click="showPage('contact')" class="px-6 py-3 rounded-md text-indigo-900 bg-white hover:bg-gray-100 transition-colors font-medium">
+                            Get Started
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-16 bg-gray-900">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h2 class="text-3xl font-bold font-tech text-white mb-6">Protect Your Digital Assets</h2>
+                            <p class="text-gray-400 mb-6">Our cybersecurity services provide comprehensive protection for your digital infrastructure, ensuring your data and systems are secure from threats. We implement multi-layered security protocols to safeguard your business.</p>
+                            
+                            <div class="mb-8 space-y-4">
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Security audits and vulnerability assessments</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Penetration testing and ethical hacking</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Incident response planning and management</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Security awareness training for employees</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative">
+                            <div class="bg-gray-800 rounded-xl p-8 border border-gray-700">
+                                <div class="flex items-center justify-between mb-6">
+                                    <h3 class="text-xl font-bold text-white">Security Services</h3>
+                                    <div class="h-10 w-10 rounded-full bg-gradient-primary flex items-center justify-center">
+                                        <i class="fas fa-shield-alt text-white"></i>
+                                    </div>
+                                </div>
+                                
+                                <div class="space-y-4">
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-sm font-medium text-white">Network Security</span>
+                                        </div>
+                                        <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                            <div class="bg-secondary h-2.5 rounded-full" style="width: 95%"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-sm font-medium text-white">Cloud Security</span>
+                                        </div>
+                                        <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                            <div class="bg-green-500 h-2.5 rounded-full" style="width: 90%"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-sm font-medium text-white">Endpoint Protection</span>
+                                        </div>
+                                        <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                            <div class="bg-blue-500 h-2.5 rounded-full" style="width: 92%"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-sm font-medium text-white">Data Encryption</span>
+                                        </div>
+                                        <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                            <div class="bg-purple-500 h-2.5 rounded-full" style="width: 98%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="py-16 bg-gray-800">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h2 class="text-3xl font-bold font-tech text-white mb-6">Ready to Secure Your Business?</h2>
+                    <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-8">Our cybersecurity experts are ready to protect your digital assets.</p>
+                    <button @click="showPage('contact')" class="px-6 py-3 rounded-md text-white bg-gradient-primary hover:opacity-90 font-medium">
+                        Get Protected
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Cloud Solutions Page -->
+        <div x-show="currentPage === 'cloud-solutions'" class="page-transition fade-in">
+            <section class="relative service-hero bg-gradient-primary pt-24 pb-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="text-center">
+                        <h1 class="text-4xl md:text-5xl font-bold font-tech text-white mb-6">Cloud Solutions</h1>
+                        <p class="text-xl text-gray-200 max-w-3xl mx-auto mb-12">Scalable cloud architecture and migration services for optimal performance.</p>
+                        <button @click="showPage('contact')" class="px-6 py-3 rounded-md text-indigo-900 bg-white hover:bg-gray-100 transition-colors font-medium">
+                            Get Started
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-16 bg-gray-900">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h2 class="text-3xl font-bold font-tech text-white mb-6">Scalable Cloud Infrastructure</h2>
+                            <p class="text-gray-400 mb-6">We design and implement scalable cloud solutions that optimize performance, reduce costs, and enhance business agility. Our cloud services include migration, architecture design, and ongoing management.</p>
+                            
+                            <div class="mb-8 space-y-4">
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Cloud migration strategy and implementation</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Cloud-native application development</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Cloud infrastructure optimization</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-6 w-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                    <p class="text-gray-300">Cloud security and compliance</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative">
+                            <div class="bg-gray-800 rounded-xl p-8 border border-gray-700">
+                                <div class="flex items-center justify-between mb-6">
+                                    <h3 class="text-xl font-bold text-white">Cloud Platforms</h3>
+                                    <div class="h-10 w-10 rounded-full bg-gradient-primary flex items-center justify-center">
+                                        <i class="fas fa-cloud text-white"></i>
+                                    </div>
+                                </div>
+                                
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="flex items-center">
+                                        <i class="fab fa-aws text-orange-400 mr-3 text-xl"></i>
+                                        <span class="text-white">AWS</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fab fa-microsoft text-blue-400 mr-3 text-xl"></i>
+                                        <span class="text-white">Azure</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fab fa-google text-red-400 mr-3 text-xl"></i>
+                                        <span class="text-white">Google Cloud</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fab fa-digital-ocean text-blue-300 mr-3 text-xl"></i>
+                                        <span class="text-white">Digital Ocean</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="py-16 bg-gray-800">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h2 class="text-3xl font-bold font-tech text-white mb-6">Ready to Move to the Cloud?</h2>
+                    <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-8">Our cloud experts are ready to help you build a scalable, secure infrastructure.</p>
+                    <button @click="showPage('contact')" class="px-6 py-3 rounded-md text-white bg-gradient-primary hover:opacity-90 font-medium">
+                        Start Your Migration
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Case Studies Page -->
+        <div x-show="currentPage === 'case-studies'" class="page-transition fade-in">
+            <!-- Case Studies Hero -->
+            <section class="relative bg-gray-900 py-16 md:py-24">
+                <div class="absolute inset-0 z-0">
+                    <svg class="absolute left-0 top-0 h-full w-full" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.1" filter="url(#filter0_f)">
+                            <circle cx="600" cy="300" r="150" fill="#4cc9f0" />
+                            <circle cx="900" cy="500" r="200" fill="#7209b7" />
+                        </g>
+                        <defs>
+                            <filter id="filter0_f" x="-400" y="-400" width="2200" height="1600" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                                <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur"/>
+                            </filter>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="text-center">
+                        <h1 class="text-4xl md:text-5xl font-bold font-tech text-white mb-6">Our Case Studies</h1>
+                        <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-12">Discover how we've helped businesses transform through innovative technology solutions.</p>
+                    </div>
+                    
+                    <!-- Case Studies Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <template x-for="caseStudy in caseStudies" :key="caseStudy.id">
+                            <div class="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 transition-all hover:shadow-xl">
+                                <div class="h-48 bg-cover bg-center" :style="'background-image: url(' + caseStudy.image + ')'"></div>
+                                <div class="p-6">
+                                    <div class="mb-4">
+                                        <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-indigo-900 text-indigo-200" x-text="caseStudy.category.charAt(0).toUpperCase() + caseStudy.category.slice(1)"></span>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-white mb-3" x-text="caseStudy.title"></h3>
+                                    <p class="text-gray-400 mb-4" x-text="caseStudy.brief"></p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-400" x-text="'Client: ' + caseStudy.client"></span>
+                                        <button @click="selectCaseStudy(caseStudy)" class="text-secondary hover:text-white transition-colors text-sm font-medium">
+                                            Read Full Study
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Case Study Detail Page -->
+        <div x-show="currentPage === 'case-study-detail'" class="page-transition fade-in" x-data>
+            <template x-if="selectedCaseStudy">
+                <section class="case-study-detail py-16">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="text-center mb-12">
+                            <button @click="showPage('case-studies')" class="mb-6 flex items-center text-secondary hover:text-white">
+                                <i class="fas fa-arrow-left mr-2"></i> Back to Case Studies
+                            </button>
+                            <h1 class="text-4xl font-bold font-tech text-white mb-4" x-text="selectedCaseStudy.title"></h1>
+                            <p class="text-xl text-gray-300" x-text="selectedCaseStudy.client"></p>
+                        </div>
+                        
+                        <div class="bg-gray-800 rounded-xl p-8 mb-12">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                                <div>
+                                    <h2 class="text-2xl font-bold text-white mb-4">The Challenge</h2>
+                                    <p class="text-gray-400" x-text="selectedCaseStudy.challenge"></p>
+                                </div>
+                                
+                                <div>
+                                    <h2 class="text-2xl font-bold text-white mb-4">Our Solution</h2>
+                                    <p class="text-gray-400" x-text="selectedCaseStudy.solution"></p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-16">
+                            <h2 class="text-3xl font-bold text-white mb-6 text-center">Key Results</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                <template x-for="result in selectedCaseStudy.results" :key="result">
+                                    <div class="bg-gray-900 rounded-xl p-6 border border-gray-700 text-center">
+                                        <div class="h-16 w-16 rounded-full bg-gradient-primary flex items-center justify-center mx-auto mb-4">
+                                            <i class="fas fa-check text-white text-xl"></i>
+                                        </div>
+                                        <p class="text-white" x-text="result"></p>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button @click="showPage('contact')" class="px-6 py-3 rounded-md text-white bg-gradient-primary hover:opacity-90 font-medium">
+                                Start Your Project
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </template>
+        </div>
+
+        <!-- Team Page -->
+        <div x-show="currentPage === 'team'" class="page-transition fade-in">
+            <!-- Team Hero -->
+            <section class="relative bg-gray-900 py-16 md:py-24">
+                <div class="absolute inset-0 z-0">
+                    <svg class="absolute left-0 top-0 h-full w-full" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.1" filter="url(#filter0_f)">
+                            <circle cx="400" cy="300" r="150" fill="#4cc9f0" />
+                            <circle cx="1000" cy="400" r="200" fill="#7209b7" />
+                        </g>
+                        <defs>
+                            <filter id="filter0_f" x="-400" y="-400" width="2200" height="1600" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                                <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur"/>
+                            </filter>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="text-center">
+                        <h1 class="text-4xl md:text-5xl font-bold font-tech text-white mb-6">Our Expert Team</h1>
+                        <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-12">Meet the brilliant minds behind our innovative solutions and exceptional service.</p>
+                    </div>
+                    
+                    <!-- Team Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <template x-for="member in team" :key="member.id">
+                            <div class="team-card bg-gray-800 rounded-xl p-6 border border-gray-700 text-center">
+                                <div class="relative mx-auto mb-6">
+                                    <img :src="member.image" :alt="member.name" class="h-32 w-32 rounded-full object-cover mx-auto border-4 border-gray-700">
+                                    <div class="absolute bottom-0 right-0 h-10 w-10 rounded-full bg-gradient-primary flex items-center justify-center">
+                                        <i class="fas fa-plus text-white text-sm"></i>
+                                    </div>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-2" x-text="member.name"></h3>
+                                <p class="text-secondary mb-4" x-text="member.position"></p>
+                                <p class="text-gray-400 text-sm mb-6" x-text="member.bio"></p>
+                                <div class="flex justify-center space-x-4">
+                                    <a :href="member.social.twitter" class="text-gray-400 hover:text-blue-400 transition-colors">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a :href="member.social.linkedin" class="text-gray-400 hover:text-blue-500 transition-colors">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                    <a :href="member.social.github || member.social.dribbble" class="text-gray-400 hover:text-purple-500 transition-colors">
+                                        <i :class="member.social.github ? 'fab fa-github' : 'fab fa-dribbble'"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Team Expertise -->
+            <section class="py-16 bg-gray-800">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl font-bold font-tech text-white mb-4">Our Areas of Expertise</h2>
+                        <p class="text-xl text-gray-400 max-w-3xl mx-auto">Combining deep technical knowledge with industry experience to deliver exceptional results.</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-gray-900 rounded-xl p-8 border border-gray-700">
+                            <div class="h-16 w-16 rounded-lg bg-gradient-primary flex items-center justify-center mb-6 mx-auto">
+                                <i class="fas fa-brain text-2xl text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4 text-center">Artificial Intelligence</h3>
+                            <p class="text-gray-400 text-center">Machine learning, natural language processing, computer vision, and predictive analytics solutions.</p>
+                        </div>
+                        
+                        <div class="bg-gray-900 rounded-xl p-8 border border-gray-700">
+                            <div class="h-16 w-16 rounded-lg bg-gradient-primary flex items-center justify-center mb-6 mx-auto">
+                                <i class="fas fa-code text-2xl text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4 text-center">Software Development</h3>
+                            <p class="text-gray-400 text-center">Full-stack development, cloud-native applications, microservices architecture, and API integration.</p>
+                        </div>
+                        
+                        <div class="bg-gray-900 rounded-xl p-8 border border-gray-700">
+                            <div class="h-16 w-16 rounded-lg bg-gradient-primary flex items-center justify-center mb-6 mx-auto">
+                                <i class="fas fa-shield-alt text-2xl text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4 text-center">Cybersecurity</h3>
+                            <p class="text-gray-400 text-center">Threat intelligence, vulnerability management, compliance, and security architecture design.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="py-16 bg-gray-900">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h2 class="text-3xl font-bold font-tech text-white mb-6">Join Our Team</h2>
+                    <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-8">We're always looking for talented individuals to join our team of experts.</p>
+                    <button @click="showPage('contact')" class="px-6 py-3 rounded-md text-white bg-gradient-primary hover:opacity-90 font-medium">
+                        View Open Positions
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Blog Page -->
+        <div x-show="currentPage === 'blog'" class="page-transition fade-in">
+            <!-- Blog Hero -->
+            <section class="relative bg-gray-900 py-16 md:py-24">
+                <div class="absolute inset-0 z-0">
+                    <svg class="absolute left-0 top-0 h-full w-full" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.1" filter="url(#filter0_f)">
+                            <circle cx="600" cy="300" r="150" fill="#4cc9f0" />
+                            <circle cx="900" cy="500" r="200" fill="#7209b7" />
+                        </g>
+                        <defs>
+                            <filter id="filter0_f" x="-400" y="-400" width="2200" height="1600" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                                <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur"/>
+                            </filter>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="text-center">
+                        <h1 class="text-4xl md:text-5xl font-bold font-tech text-white mb-6">Insights & Resources</h1>
+                        <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-12">Stay updated with the latest trends, technologies, and best practices in AI and software development.</p>
+                    </div>
+                    
+                    <!-- Featured Post -->
+                    <div class="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 mb-16">
+                        <div class="grid grid-cols-1 lg:grid-cols-2">
+                            <div class="h-64 lg:h-auto bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1677442135722-5fbfade9edf0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                            <div class="p-8">
+                                <div class="mb-4">
+                                    <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-indigo-900 text-indigo-200">AI Technology</span>
+                                </div>
+                                <h2 class="text-2xl font-bold text-white mb-4">The Future of AI Agents in Business Operations</h2>
+                                <p class="text-gray-400 mb-6">Exploring how intelligent agents are revolutionizing workflow automation and decision support systems.</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Dr. Alex Morgan" class="h-10 w-10 rounded-full mr-3">
+                                        <div>
+                                            <span class="text-sm text-white">Dr. Alex Morgan</span>
+                                            <span class="text-sm text-gray-400 block">June 15, 2023</span>
+                                        </div>
+                                    </div>
+                                    <button class="text-secondary hover:text-white text-sm font-medium">
+                                        Read Full Article
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Blog Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <template x-for="post in blogPosts.slice(1)" :key="post.id">
+                            <div class="bg-gray-800 rounded-xl overflow-hidden border border-gray-700">
+                                <div class="h-48 bg-cover bg-center" :style="'background-image: url(' + post.image + ')'"></div>
+                                <div class="p-6">
+                                    <div class="mb-4">
+                                        <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-indigo-900 text-indigo-200" x-text="post.category"></span>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-white mb-3" x-text="post.title"></h3>
+                                    <p class="text-gray-400 mb-6" x-text="post.excerpt"></p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-400" x-text="post.date"></span>
+                                        <button class="text-secondary hover:text-white transition-colors text-sm font-medium">
+                                            Read More
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    
+                    <div class="text-center mt-12">
+                        <button class="px-6 py-3 rounded-md text-white border-2 border-indigo-500 hover:bg-indigo-500 hover:bg-opacity-20 transition-all font-medium">
+                            View All Articles
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Pricing Page -->
+        <div x-show="currentPage === 'pricing'" class="page-transition fade-in">
+            <!-- Pricing Hero -->
+            <section class="relative bg-gray-900 py-16 md:py-24">
+                <div class="absolute inset-0 z-0">
+                    <svg class="absolute left-0 top-0 h-full w-full" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.1" filter="url(#filter0_f)">
+                            <circle cx="400" cy="400" r="200" fill="#4cc9f0" />
+                            <circle cx="1000" cy="300" r="150" fill="#7209b7" />
+                        </g>
+                        <defs>
+                            <filter id="filter0_f" x="-400" y="-400" width="2200" height="1600" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                                <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur"/>
+                            </filter>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="text-center">
+                        <h1 class="text-4xl md:text-5xl font-bold font-tech text-white mb-6">Pricing Plans</h1>
+                        <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-12">Flexible solutions designed to meet your business needs and budget.</p>
+                    </div>
+                    
+                    <!-- Pricing Toggle -->
+                    <div class="flex justify-center mb-16">
+                        <div class="inline-flex rounded-md p-1 bg-gray-800">
+                            <button class="px-6 py-3 rounded-md text-sm font-medium text-white bg-gradient-primary">
+                                Project-Based
+                            </button>
+                            <button class="px-6 py-3 rounded-md text-sm font-medium text-gray-300 hover:text-white">
+                                Retainer
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Pricing Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <template x-for="plan in pricingPlans" :key="plan.id">
+                            <div class="bg-gray-800 rounded-xl p-8 border border-gray-700 relative" :class="{'pricing-highlight': plan.recommended}">
+                                <div class="text-center mb-8">
+                                    <h3 class="text-xl font-bold text-white mb-2" x-text="plan.name"></h3>
+                                    <div class="flex items-center justify-center">
+                                        <span class="text-4xl font-bold text-white" x-text="plan.price"></span>
+                                        <span class="text-gray-400 ml-2" x-text="plan.billing"></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-8">
+                                    <ul class="space-y-4">
+                                        <template x-for="feature in plan.features" :key="feature">
+                                            <li class="flex items-start">
+                                                <div class="h-6 w-6 rounded-full bg-green-500 bg-opacity-20 flex items-center justify-center mr-3 flex-shrink-0">
+                                                    <i class="fas fa-check text-green-400 text-xs"></i>
+                                                </div>
+                                                <span class="text-gray-300" x-text="feature"></span>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </div>
+                                
+                                <button @click="showPage('contact')" class="w-full py-3 rounded-md text-center font-medium transition-colors" :class="plan.recommended ? 'bg-gradient-primary text-white hover:opacity-90' : 'bg-gray-700 text-gray-300 hover:bg-gray-600'">
+                                    Get Started
+                                </button>
+                            </div>
+                        </template>
+                    </div>
+                    
+                    <div class="mt-16 bg-gray-800 rounded-xl p-8 border border-gray-700">
+                        <div class="text-center mb-6">
+                            <h3 class="text-2xl font-bold font-tech text-white mb-4">Custom Solutions</h3>
+                            <p class="text-gray-400 max-w-3xl mx-auto">Have unique requirements? We offer fully customized solutions tailored to your specific business needs and objectives.</p>
+                        </div>
+                        <div class="flex justify-center">
+                            <button @click="showPage('contact')" class="px-6 py-3 rounded-md text-white bg-gradient-primary hover:opacity-90 transition-all font-medium">
+                                Request a Custom Quote
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Page -->
+        <div x-show="currentPage === 'contact'" class="page-transition fade-in">
+            <!-- Contact Hero -->
+            <section class="relative bg-gray-900 py-16 md:py-24">
+                <div class="absolute inset-0 z-0">
+                    <svg class="absolute left-0 top-0 h-full w-full" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.1" filter="url(#filter0_f)">
+                            <circle cx="500" cy="300" r="150" fill="#4cc9f0" />
+                            <circle cx="900" cy="500" r="200" fill="#7209b7" />
+                        </g>
+                        <defs>
+                            <filter id="filter0_f" x="-400" y="-400" width="2200" height="1600" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                                <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur"/>
+                            </filter>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h1 class="text-4xl md:text-5xl font-bold font-tech text-white mb-6">Get in Touch</h1>
+                            <p class="text-xl text-gray-300 mb-8">Ready to start your project? Have questions about our services? We'd love to hear from you.</p>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="h-12 w-12 rounded-full bg-gradient-primary flex items-center justify-center mr-4 flex-shrink-0">
+                                        <i class="fas fa-map-marker-alt text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-bold text-white mb-1">Our Office</h3>
+                                        <p class="text-gray-400">123 Tech Boulevard<br>San Francisco, CA 94107</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="h-12 w-12 rounded-full bg-gradient-primary flex items-center justify-center mr-4 flex-shrink-0">
+                                        <i class="fas fa-phone-alt text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-bold text-white mb-1">Phone</h3>
+                                        <p class="text-gray-400">+1 (555) 123-4567</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="h-12 w-12 rounded-full bg-gradient-primary flex items-center justify-center mr-4 flex-shrink-0">
+                                        <i class="fas fa-envelope text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-bold text-white mb-1">Email</h3>
+                                        <p class="text-gray-400">contact@neuraforge.tech</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="h-12 w-12 rounded-full bg-gradient-primary flex items-center justify-center mr-4 flex-shrink-0">
+                                        <i class="fas fa-clock text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-bold text-white mb-1">Business Hours</h3>
+                                        <p class="text-gray-400">Monday - Friday: 9am - 6pm PST<br>Saturday - Sunday: Closed</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="bg-gray-800 rounded-xl p-8 border border-gray-700">
+                                <h2 class="text-2xl font-bold font-tech text-white mb-6">Send Us a Message</h2>
+                                
+                                <form class="space-y-6">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div>
+                                            <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Name *</label>
+                                            <input type="text" id="name" x-model="contactForm.name" class="contact-input w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" required>
+                                        </div>
+                                        <div>
+                                            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email *</label>
+                                            <input type="email" id="email" x-model="contactForm.email" class="contact-input w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <label for="company" class="block text-sm font-medium text-gray-300 mb-2">Company</label>
+                                        <input type="text" id="company" x-model="contactForm.company" class="contact-input w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
+                                    </div>
+                                    
+                                    <div>
+                                        <label for="service" class="block text-sm font-medium text-gray-300 mb-2">Service Interested In</label>
+                                        <select id="service" x-model="contactForm.service" class="contact-input w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
+                                            <option value="">Select a service</option>
+                                            <option value="ai">AI Solutions</option>
+                                            <option value="development">Development</option>
+                                            <option value="security">Security</option>
+                                            <option value="infrastructure">Infrastructure</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div>
+                                        <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Message *</label>
+                                        <textarea id="message" x-model="contactForm.message" rows="5" class="contact-input w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" required></textarea>
+                                    </div>
+                                    
+                                    <button @click.prevent="submitContactForm" class="w-full py-3 rounded-md text-white bg-gradient-primary hover:opacity-90 transition-all font-medium">
+                                        Send Message
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="h-10 w-10 rounded-full bg-gradient-primary flex items-center justify-center mr-2">
+                            <span class="font-tech font-bold text-white">NF</span>
+                        </div>
+                        <span class="font-tech font-bold text-xl text-white">NeuraForge<span class="text-gradient">Technologies</span></span>
+                    </div>
+                    <p class="text-gray-400 mb-6">Transforming businesses through cutting-edge AI and software solutions.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gray-300 transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-pink-500 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold text-white mb-6">Services</h3>
+                    <ul class="space-y-4">
+                        <li><a @click="showPage('ai-agents')" class="text-gray-400 hover:text-white transition-colors cursor-pointer">AI Agents Development</a></li>
+                        <li><a @click="showPage('ai-software')" class="text-gray-400 hover:text-white transition-colors cursor-pointer">AI Software Development</a></li>
+                        <li><a @click="showPage('web-development')" class="text-gray-400 hover:text-white transition-colors cursor-pointer">Web Development</a></li>
+                        <li><a @click="showPage('app-development')" class="text-gray-400 hover:text-white transition-colors cursor-pointer">App Development</a></li>
+                        <li><a @click="showPage('cybersecurity')" class="text-gray-400 hover:text-white transition-colors cursor-pointer">Cybersecurity Services</a></li>
+                        <li><a @click="showPage('cloud-solutions')" class="text-gray-400 hover:text-white transition-colors cursor-pointer">Cloud Solutions</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold text-white mb-6">Company</h3>
+                    <ul class="space-y-4">
+                        <li><a @click="showPage('home')" class="text-gray-400 hover:text-white transition-colors cursor-pointer">Home</a></li>
+                        <li><a @click="showPage('team')" class="text-gray-400 hover:text-white transition-colors cursor-pointer">About Us</a></li>
+                        <li><a @click="showPage('case-studies')" class="text-gray-400 hover:text-white transition-colors cursor-pointer">Case Studies</a></li>
+                        <li><a @click="showPage('blog')" class="text-gray-400 hover:text-white transition-colors cursor-pointer">Blog</a></li>
+                        <li><a @click="showPage('pricing')" class="text-gray-400 hover:text-white transition-colors cursor-pointer">Pricing</a></li>
+                        <li><a @click="showPage('contact')" class="text-gray-400 hover:text-white transition-colors cursor-pointer">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold text-white mb-6">Newsletter</h3>
+                    <p class="text-gray-400 mb-6">Subscribe to our newsletter for the latest updates and insights.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-3 rounded-l-lg w-full bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-secondary">
+                        <button class="px-4 py-3 rounded-r-lg bg-gradient-primary text-white font-medium">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">© 2023 NeuraForge Technologies. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Cookies</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Link Validation Script -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check all links on the page
+        const links = document.querySelectorAll('a');
+        links.forEach(link => {
+            if (!link.getAttribute('href') && !link.hasAttribute('@click')) {
+                console.warn('Link without target:', link.textContent);
+                link.classList.add('broken-link');
+            }
+        });
+        
+        // Add outline to links without targets for debugging
+        const brokenLinks = document.querySelectorAll('.broken-link');
+        brokenLinks.forEach(link => {
+            link.style.outline = '2px solid red';
+        });
+    });
+    </script>
+</body>
+</html>
