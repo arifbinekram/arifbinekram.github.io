@@ -1,0 +1,100 @@
+{
+  "name": "jobhunt-pro",
+  "version": "2.0.0",
+  "description": "Enterprise-grade job portal platform for connecting talent with top tech companies",
+  "main": "job-portal-backend-api.js",
+  "scripts": {
+    "start": "node job-portal-backend-api.js",
+    "dev": "nodemon job-portal-backend-api.js",
+    "test": "mocha job-portal-tests.js --timeout 10000",
+    "test:watch": "mocha job-portal-tests.js --watch",
+    "test:coverage": "nyc mocha job-portal-tests.js",
+    "lint": "eslint *.js",
+    "lint:fix": "eslint *.js --fix",
+    "db:migrate": "psql jobhunt_pro < database-schema.sql",
+    "db:seed": "node scripts/seed-database.js",
+    "docs": "jsdoc -c jsdoc.json",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\""
+  },
+  "keywords": [
+    "job-portal",
+    "recruitment",
+    "react",
+    "express",
+    "postgresql",
+    "rest-api",
+    "jwt-authentication",
+    "faang",
+    "enterprise"
+  ],
+  "author": "Your Name <your.email@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/jobhunt-pro.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/jobhunt-pro/issues"
+  },
+  "homepage": "https://github.com/yourusername/jobhunt-pro#readme",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "jsonwebtoken": "^9.0.2",
+    "bcryptjs": "^2.4.3",
+    "express-rate-limit": "^7.1.5",
+    "express-validator": "^7.0.1",
+    "helmet": "^7.1.0",
+    "pg": "^8.11.3",
+    "dotenv": "^16.3.1",
+    "compression": "^1.7.4",
+    "morgan": "^1.10.0",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "mocha": "^10.2.0",
+    "chai": "^4.3.10",
+    "sinon": "^17.0.1",
+    "supertest": "^6.3.3",
+    "nyc": "^15.1.0",
+    "nodemon": "^3.0.2",
+    "eslint": "^8.55.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "prettier": "^3.1.1",
+    "jsdoc": "^4.0.2"
+  },
+  "nyc": {
+    "reporter": [
+      "text",
+      "html",
+      "lcov"
+    ],
+    "exclude": [
+      "**/*.test.js",
+      "node_modules/**",
+      "coverage/**"
+    ],
+    "check-coverage": true,
+    "lines": 80,
+    "statements": 80,
+    "functions": 80,
+    "branches": 75
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "es2021": true,
+      "mocha": true
+    },
+    "extends": "airbnb-base",
+    "rules": {
+      "no-console": "off",
+      "no-underscore-dangle": "off"
+    }
+  }
+}
